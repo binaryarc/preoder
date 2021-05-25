@@ -14,8 +14,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".QR_code"></activity>
-        <activity android:name=".menu_list" />
-        <activity android:name=".restaurant_list" />
+        <activity android:name="com.sample.kakao.menu_list" />
+        <activity android:name="com.sample.kakao.restaurant_list" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
