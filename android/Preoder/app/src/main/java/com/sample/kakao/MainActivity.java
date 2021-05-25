@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         pass_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,restaurant_list.class);
+                Intent intent = new Intent(MainActivity.this,Nmaps_test.class);
                 startActivity(intent);
                 finish();
             }

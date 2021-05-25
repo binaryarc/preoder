@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#707070"
-            android:text="로그인 넘기기(식당리스트로)"
+            android:text="로그인 넘기기(map_test로)"
             android:textSize="19sp"
             android:textStyle="bold"
             android:id="@+id/btn_login_pass"
