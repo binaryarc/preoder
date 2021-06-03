@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Search_list_test"></activity>
+        <activity android:name=".URL_test"></activity>
+        <activity android:name=".Search_list_test" />
         <activity android:name=".Nmaps_test" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".KakaoLogin" />
