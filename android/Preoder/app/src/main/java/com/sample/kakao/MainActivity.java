@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         pass_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Nmaps_test.class);
+                Intent intent = new Intent(MainActivity.this, menu_list.class);
                 startActivity(intent);
                 finish();
             }
