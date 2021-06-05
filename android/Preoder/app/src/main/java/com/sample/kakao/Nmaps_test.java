@@ -22,92 +22,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class Nmaps_test extends AppCompatActivity {
-    public static class ApiSearchLocal{
-        public static String getjsontext(String arg) {
-            String clientId = "7k0MJ5PlUscGVH5x3Aiv"; //애플리케이션 클라이언트 아이디값"
-            String clientSecret = "cxng5Nn0Jc"; //애플리케이션 클라이언트 시크릿값"
-            String text = null;
-            try {
-                text = URLEncoder.encode(arg, "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                throw new RuntimeException("검색어 인코딩 실패",e);
-            }
 
-            String apiURL = "https://openapi.naver.com/v1/search/local?query=" + text +"&display=10";    // json 결과
-            //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
-
-            Map<String, String> requestHeaders = new HashMap<>();
-            requestHeaders.put("X-Naver-Client-Id", clientId);
-            requestHeaders.put("X-Naver-Client-Secret", clientSecret);
-            String responseBody = get(apiURL,requestHeaders);
-            System.out.println(responseBody);
-            return responseBody;
-        }
-        private static String get(String apiUrl, Map<String, String> requestHeaders){
-            HttpURLConnection con = connect(apiUrl);
-            try {
-                con.setRequestMethod("GET");
-                for(Map.Entry<String, String> header :requestHeaders.entrySet()) {
-                    con.setRequestProperty(header.getKey(), header.getValue());
-                }
-
-                int responseCode = con.getResponseCode();
-                if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
-                    return readBody(con.getInputStream());
-                } else { // 에러 발생
-                    return readBody(con.getErrorStream());
-                }
-            } catch (IOException e) {
-                throw new RuntimeException("API 요청과 응답 실패", e);
-            } finally {
-                con.disconnect();
-            }
-        }
-
-        private static HttpURLConnection connect(String apiUrl){
-            try {
-                URL url = new URL(apiUrl);
-                return (HttpURLConnection)url.openConnection();
-            } catch (MalformedURLException e) {
-                throw new RuntimeException("API URL이 잘못되었습니다. : " + apiUrl, e);
-            } catch (IOException e) {
-                throw new RuntimeException("연결이 실패했습니다. : " + apiUrl, e);
-            }
-        }
-
-        private static String readBody(InputStream body){
-            InputStreamReader streamReader = new InputStreamReader(body);
-
-
-            try (BufferedReader lineReader = new BufferedReader(streamReader)) {
-                StringBuilder responseBody = new StringBuilder();
-
-
-                String line;
-                while ((line = lineReader.readLine()) != null) {
-                    responseBody.append(line);
-                }
-
-
-                return responseBody.toString();
-            } catch (IOException e) {
-                throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);
-            }
-        }
-    }
 
     private MapView mapView;
     private static final int LOCATION_PERMISSION_REQUEST_CODE =1000;
@@ -116,6 +34,11 @@ public class Nmaps_test extends AppCompatActivity {
     private Geocoder geocoder;
     private String json_str;
     private MyAsyncTask MA = new MyAsyncTask();
+
+    private ArrayList<String>R_nameList;
+    private ArrayList<String>R_locationList;
+
+    public static String total_List = null;
     Button near_list_btn,chk_btn;
     TextView tv,tv2;
     EditText editText;
@@ -134,8 +57,12 @@ public class Nmaps_test extends AppCompatActivity {
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this::OnMapReady);
 
+        R_nameList = new ArrayList<>();
+        R_locationList = new ArrayList<>();
+
         //지도 사용권한 받기
         locationSource = new FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE);
+
         chk_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,9 +71,9 @@ public class Nmaps_test extends AppCompatActivity {
                         MA.onPreExecute();
                         MA.set_input(editText.getText().toString());
                         MA.doInBackground();
+
                         json_str = MA.get_json();
                         tv.setText(json_str);
-
 
                         String getTitle;
                         String titleFilter;
@@ -155,36 +82,37 @@ public class Nmaps_test extends AppCompatActivity {
                         String address;
                         String roadAddress;
                         String mapx,mapy;
-                        String total_list=null;
+
                         try {
                             JSONObject jsonObject = new JSONObject(json_str);
                             JSONArray jsonArray = jsonObject.getJSONArray("items");
-                            tv2.setText(jsonArray.length());
+                            tv.setText(jsonArray.toString());
                             for(int i=0;i<jsonArray.length();i++)
                             {
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                                 getTitle =  jsonObject1.getString("title");
-
                                 titleFilter = getTitle.replaceAll("<b>","");
-                                title += titleFilter.replaceAll("</b>","") +", ";
-                                tv2.setText(title);
-                                total_list += title +", ";
+                                title = titleFilter.replaceAll("</b>","") +", ";
                                 category = jsonObject1.getString("category");
                                 address = jsonObject1.getString("adress");
                                 roadAddress = jsonObject1.getString("roadAddress");
                                 mapx = jsonObject1.getString("mapx");
                                 mapy = jsonObject1.getString("mapy");
+                                R_nameList.add(title);
+                                R_locationList.add(address);
+                                tv2.setText(R_nameList.toString());
                             }
-                            tv2.setText(title);
 
                         }catch (JsonIOException | JSONException | NullPointerException e){
                             e.printStackTrace();
                         }
-
-                        MA.onPostExecute(null);
+                        //tv2.setText(total_List);
+                        //tv2.setText(R_nameList.toString() +"\n" + R_locationList.toString() +"\n");
                     }
                 };
                 thread.start();
+                tv2.setText(R_nameList.toString() +"\n" + R_locationList.toString() +"\n");
+                MA.onPostExecute(null);
             }
 
         });
