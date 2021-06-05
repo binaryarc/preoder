@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         pass_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,Nmaps_test.class);
+                Intent intent = new Intent(MainActivity.this, Nmaps_test.class);
                 startActivity(intent);
                 finish();
             }
