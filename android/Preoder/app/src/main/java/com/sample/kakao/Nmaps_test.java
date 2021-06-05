@@ -35,7 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Nmaps_test extends AppCompatActivity {
-    public static class ApiSearchLocal {
+    public static class ApiSearchLocal{
         public static String getjsontext(String arg) {
             String clientId = "7k0MJ5PlUscGVH5x3Aiv"; //애플리케이션 클라이언트 아이디값"
             String clientSecret = "cxng5Nn0Jc"; //애플리케이션 클라이언트 시크릿값"
@@ -48,7 +48,6 @@ public class Nmaps_test extends AppCompatActivity {
 
             String apiURL = "https://openapi.naver.com/v1/search/local?query=" + text +"&display=10";    // json 결과
             //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
-
 
             Map<String, String> requestHeaders = new HashMap<>();
             requestHeaders.put("X-Naver-Client-Id", clientId);
@@ -65,7 +64,6 @@ public class Nmaps_test extends AppCompatActivity {
                     con.setRequestProperty(header.getKey(), header.getValue());
                 }
 
-
                 int responseCode = con.getResponseCode();
                 if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
                     return readBody(con.getInputStream());
@@ -78,6 +76,7 @@ public class Nmaps_test extends AppCompatActivity {
                 con.disconnect();
             }
         }
+
         private static HttpURLConnection connect(String apiUrl){
             try {
                 URL url = new URL(apiUrl);
@@ -116,7 +115,7 @@ public class Nmaps_test extends AppCompatActivity {
     private NaverMap naverMap;
     private Geocoder geocoder;
     private String json_str;
-
+    private MyAsyncTask MA = new MyAsyncTask();
     Button near_list_btn,chk_btn;
     TextView tv,tv2;
     EditText editText;
@@ -135,44 +134,59 @@ public class Nmaps_test extends AppCompatActivity {
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this::OnMapReady);
 
-
-
         //지도 사용권한 받기
         locationSource = new FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE);
         chk_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String getTitle;
-                String titleFilter;
-                String title;
-                String category;
-                String address;
-                String roadAddress;
-                String mapx,mapy;
-                try {
-                    JSONObject jsonObject = new JSONObject(json_str);
-                    JSONArray jsonArray = jsonObject.getJSONArray("items");
+                Thread thread = new Thread(){
+                    public void run(){
+                        MA.onPreExecute();
+                        MA.set_input(editText.getText().toString());
+                        MA.doInBackground();
+                        json_str = MA.get_json();
+                        tv.setText(json_str);
 
-                    for(int i=0;i<jsonArray.length();i++)
-                    {
-                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                        getTitle =  jsonObject1.getString("title");
-                        titleFilter = getTitle.replaceAll("<b>","");
-                        title = titleFilter.replaceAll("</b>","");
 
-                        category = jsonObject1.getString("category");
-                        address = jsonObject1.getString("adress");
-                        roadAddress = jsonObject1.getString("roadAddress");
-                        mapx = jsonObject1.getString("mapx");
-                        mapy = jsonObject1.getString("mapy");
-                        tv.setText(mapx + " , " + mapy);
-                        tv2.setText(title + "," + category + " , " + address);
+                        String getTitle;
+                        String titleFilter;
+                        String title=null;
+                        String category;
+                        String address;
+                        String roadAddress;
+                        String mapx,mapy;
+                        String total_list=null;
+                        try {
+                            JSONObject jsonObject = new JSONObject(json_str);
+                            JSONArray jsonArray = jsonObject.getJSONArray("items");
+                            tv2.setText(jsonArray.length());
+                            for(int i=0;i<jsonArray.length();i++)
+                            {
+                                JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                                getTitle =  jsonObject1.getString("title");
+
+                                titleFilter = getTitle.replaceAll("<b>","");
+                                title += titleFilter.replaceAll("</b>","") +", ";
+                                tv2.setText(title);
+                                total_list += title +", ";
+                                category = jsonObject1.getString("category");
+                                address = jsonObject1.getString("adress");
+                                roadAddress = jsonObject1.getString("roadAddress");
+                                mapx = jsonObject1.getString("mapx");
+                                mapy = jsonObject1.getString("mapy");
+                            }
+                            tv2.setText(title);
+
+                        }catch (JsonIOException | JSONException | NullPointerException e){
+                            e.printStackTrace();
+                        }
+
+                        MA.onPostExecute(null);
                     }
-                }catch (JsonIOException | JSONException | NullPointerException e){
-                    e.printStackTrace();
-                }
-
+                };
+                thread.start();
             }
+
         });
 
     }
@@ -214,20 +228,6 @@ public class Nmaps_test extends AppCompatActivity {
         uiSettings.setZoomControlEnabled(true); //zoom
         uiSettings.setLocationButtonEnabled(true);//현재위치 버튼
 
-        near_list_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String text = editText.getText().toString();
-                Thread thread = new Thread(){
-                    public void run(){
-                        URL_test.ApiSearchLocal api = new URL_test.ApiSearchLocal();
-                        json_str = api.getjsontext(text);
-                    }
-                };
-                thread.start();
-                tv.setText(json_str);
-            }
-        });
         //지도상에 마커찍기
         //Marker maker = new Marker();
         //maker.setPosition(init_Position);
