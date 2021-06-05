@@ -19,7 +19,7 @@ import com.nhn.android.naverlogin.data.OAuthLoginState;
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
 
 public class MainActivity extends AppCompatActivity {
-    private Button mKakaoLoginBtn,mNaverLoginBtn,mGoogleLoginBtn,pass_btn;
+    private Button mKakaoLoginBtn,mNaverLoginBtn,mGoogleLoginBtn,pass_btn1,pass_btn2;
     private LoginButton mKakaoLoginBtnBasic;
     private OAuthLoginButton mNaverLoginBtnBasic;
     private KakaoLogin.KakaoSessionCallback sessionCallback;
@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        pass_btn = findViewById(R.id.btn_login_pass);
+        //pass_btn1 = findViewById(R.id.btn_login_pass1);
+        pass_btn2 = findViewById(R.id.btn_login_pass2);
         mKakaoLoginBtn = findViewById(R.id.btn_kakao_login);
         mNaverLoginBtn = findViewById(R.id.btn_naver_login);
         mGoogleLoginBtn = findViewById(R.id.btn_google_login);
@@ -67,10 +68,20 @@ public class MainActivity extends AppCompatActivity {
         mNaverLoginBtnBasic = findViewById(R.id.btn_naver_login_basic);
         mNaverLoginBtnBasic.setOAuthLoginHandler(mNaverLoginHandler);
 
-        pass_btn.setOnClickListener(new View.OnClickListener() {
+
+//        pass_btn1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, Nmaps_test.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+
+        pass_btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, menu_list.class);
+                Intent intent = new Intent(MainActivity.this, Nmaps_test.class);
                 startActivity(intent);
                 finish();
             }

@@ -1,9 +1,5 @@
 package com.sample.kakao;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +11,19 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+
 public class restaurant_list extends AppCompatActivity {
-    String[] name = {"맥도날드 동아대점", "맥도날드 부산하단DT점", "롯데리아 동아대점", "롯데리아 하단점"};
+    public static int mcdo = 0;
+    public static int lotteria = 1;
+    String[] name;
+    String[] addr;
+    Double[] latitude;
+    Double[] longitude;
     String[] brand ={"맥도날드","맥도날드","롯데리아","롯데리아"};
     Integer[] pic = {R.drawable.mcdo, R.drawable.mcdo, R.drawable.lotteria, R.drawable.lotteria};
     Intent intent;
@@ -26,6 +33,25 @@ public class restaurant_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_list);
 
+        intent = getIntent();
+
+        ArrayList<String> name_list = (ArrayList<String>)intent.getSerializableExtra("name_list");
+        int size = name_list.size();
+        name = new String[size];
+        name_list.toArray(name);
+
+        ArrayList<String> addr_list = (ArrayList<String>)intent.getSerializableExtra("addr_list");
+        addr = new String[size];
+        addr_list.toArray(addr);
+
+        ArrayList<Double> lati_list = (ArrayList<Double>)intent.getSerializableExtra("lati_list");
+        latitude = new Double[size];
+        lati_list.toArray(latitude);
+
+        ArrayList<Double> longi_list = (ArrayList<Double>)intent.getSerializableExtra("longi_list");
+        longitude = new Double[size];
+        longi_list.toArray(longitude);
+
         CustomList adapt = new CustomList(restaurant_list.this);
         ListView list = (ListView) findViewById(R.id.restaurant_listview);
         list.setAdapter(adapt);
@@ -33,8 +59,8 @@ public class restaurant_list extends AppCompatActivity {
             intent = new Intent(getApplicationContext(), menu_list.class);
             intent.putExtra("location_name", name[position]);
             intent.putExtra("brand_name",brand[position]);
-            startActivityForResult(intent, 1);
-            finish();
+            startActivity(intent);
+
         });
     }
     public class CustomList extends ArrayAdapter<String> {
@@ -53,8 +79,18 @@ public class restaurant_list extends AppCompatActivity {
             TextView location_name=(TextView)rowView.findViewById(R.id.name1);
             TextView sell_menu=(TextView)rowView.findViewById(R.id.name2);
             TextView tv3=(TextView)rowView.findViewById(R.id.name3);
-            restaurant_img.setImageResource(pic[position]);
+
             location_name.setText(name[position]);
+
+            String[ ]temp = name[position].split(" ");
+            if(temp[0].equals("맥도날드"))
+            {
+                restaurant_img.setImageResource(pic[mcdo]);
+            }else if(temp[0].equals("롯데리아"))
+            {
+                restaurant_img.setImageResource(pic[lotteria]);
+            }
+
             sell_menu.setText("햄버거");
             tv3.setText("");
             return rowView;

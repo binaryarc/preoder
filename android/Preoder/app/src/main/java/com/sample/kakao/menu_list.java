@@ -14,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 
 import org.jsoup.Jsoup;
@@ -24,13 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.collection.CircularArray;
-
-import static android.media.CamcorderProfile.get;
 
 public class menu_list extends AppCompatActivity {
     Intent intent;
@@ -46,7 +43,6 @@ public class menu_list extends AppCompatActivity {
     TextView tv_name;
     ImageButton menu_qr_btn;
     Button back_btn;
-
 
 
     @Override

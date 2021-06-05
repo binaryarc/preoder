@@ -18,7 +18,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="가게정보로\n돌아가기"
+        android:text="가게리스트로\n돌아가기"
         android:id="@+id/store_back_btn"
         ></Button>
         <ImageButton

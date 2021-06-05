@@ -20,6 +20,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.95" />
 
+
     <LinearLayout
         android:id="@+id/layout_login_btn_group"
         android:layout_width="0dp"
@@ -29,16 +30,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/hg_main_70">
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#707070"
-            android:text="로그인 넘기기(map_test로)"
+            android:text="로그인 넘기기(TEST)"
             android:textSize="19sp"
             android:textStyle="bold"
-            android:id="@+id/btn_login_pass"
+            android:id="@+id/btn_login_pass2"
             ></Button>
+
         <Button
             android:id="@+id/btn_kakao_login"
             android:layout_width="match_parent"
@@ -49,11 +50,7 @@
             android:textColor="#000000"
             android:textSize="19sp"
             android:textStyle="bold"
-
             />
-
-
-
         <Button
             android:id="@+id/btn_naver_login"
             android:layout_width="match_parent"
