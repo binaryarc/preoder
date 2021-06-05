@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.kakao.sdk:v2-navi:2.4.2@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e018afe0700f616c861eef6e186d6e79/jetified-v2-navi-2.4.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eb064376863d54d2ab553242e337ecd4/jetified-v2-navi-2.4.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eb064376863d54d2ab553242e337ecd4/jetified-v2-navi-2.4.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eb064376863d54d2ab553242e337ecd4/jetified-v2-navi-2.4.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.kakao.sdk/v2-navi/2.4.2/12920d4e13f7a430de0327e457f8998047ea85c5/v2-navi-2.4.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

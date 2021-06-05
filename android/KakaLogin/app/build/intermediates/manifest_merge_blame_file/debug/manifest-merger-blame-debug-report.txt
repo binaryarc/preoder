@@ -1,0 +1,496 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.sample.kakao"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+12-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:6:5-70
+12-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:6:22-68
+13    <uses-permission android:name="android.permission.CAMERA" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+13-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:22:5-65
+13-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:22:22-62
+14    <uses-feature
+14-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:25:5-27:36
+15        android:name="android.hardware.camera"
+15-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:26:9-47
+16        android:required="false" />
+16-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:27:9-33
+17    <uses-feature
+17-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:28:5-30:36
+18        android:name="android.hardware.camera.front"
+18-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:29:9-53
+19        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+19-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:30:9-33
+20    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+21    <uses-feature
+21-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:33:5-35:36
+22        android:name="android.hardware.camera.autofocus"
+22-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:34:9-57
+23        android:required="false" />
+23-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:35:9-33
+24    <uses-feature
+24-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:36:5-38:36
+25        android:name="android.hardware.camera.flash"
+25-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:37:9-53
+26        android:required="false" />
+26-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:38:9-33
+27    <uses-feature
+27-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:39:5-41:36
+28        android:name="android.hardware.screen.landscape"
+28-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:40:9-57
+29        android:required="false" />
+29-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:41:9-33
+30    <uses-feature
+30-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:42:5-44:36
+31        android:name="android.hardware.wifi"
+31-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:43:9-45
+32        android:required="false" />
+32-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:44:9-33
+33
+34    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+34-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:24:5-79
+34-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:24:22-76
+35
+36    <queries>
+36-->[com.kakao.sdk:v2-navi:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\eb064376863d54d2ab553242e337ecd4\jetified-v2-navi-2.4.2\AndroidManifest.xml:11:5-14:15
+37        <package android:name="com.locnall.KimGiSa" />
+37-->[com.kakao.sdk:v2-navi:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\eb064376863d54d2ab553242e337ecd4\jetified-v2-navi-2.4.2\AndroidManifest.xml:12:9-55
+37-->[com.kakao.sdk:v2-navi:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\eb064376863d54d2ab553242e337ecd4\jetified-v2-navi-2.4.2\AndroidManifest.xml:12:18-52
+38        <package android:name="com.lguplus.navi" />
+38-->[com.kakao.sdk:v2-navi:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\eb064376863d54d2ab553242e337ecd4\jetified-v2-navi-2.4.2\AndroidManifest.xml:13:9-52
+38-->[com.kakao.sdk:v2-navi:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\eb064376863d54d2ab553242e337ecd4\jetified-v2-navi-2.4.2\AndroidManifest.xml:13:18-49
+39        <package android:name="com.kakao.talk" />
+39-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:12:9-50
+39-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:12:18-47
+40        <package android:name="com.kakao.talk.alpha" />
+40-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:13:9-56
+40-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:13:18-53
+41        <package android:name="com.kakao.talk.sandbox" />
+41-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:14:9-58
+41-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:14:18-55
+42        <package android:name="com.kakao.onetalk" />
+42-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:15:9-53
+42-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:15:18-50
+43        <package android:name="com.android.chrome" />
+43-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:16:9-54
+43-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:16:18-51
+44        <package android:name="com.chrome.beta" />
+44-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:17:9-51
+44-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:17:18-48
+45        <package android:name="com.chrome.dev" />
+45-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:18:9-50
+45-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\24f6b126b54126bbce341d7089228f62\jetified-v2-common-2.4.2\AndroidManifest.xml:18:18-47
+46    </queries>
+47
+48    <uses-permission android:name="android.permission.WAKE_LOCK" />
+48-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:25:5-68
+48-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:25:22-65
+49    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+49-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:26:5-110
+49-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:26:22-107
+50
+51    <application
+51-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:7:5-48:19
+52        android:name="com.sample.kakao.GlobalHelper"
+52-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:15:9-37
+53        android:allowBackup="true"
+53-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:9:9-35
+54        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+54-->[androidx.core:core:1.3.1] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\0fd693cbeda8be952cfd72e782f62993\core-1.3.1\AndroidManifest.xml:24:18-86
+55        android:debuggable="true"
+56        android:icon="@mipmap/ic_launcher"
+56-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:10:9-43
+57        android:label="@string/app_name"
+57-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:11:9-41
+58        android:roundIcon="@mipmap/ic_launcher_round"
+58-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:12:9-54
+59        android:supportsRtl="true"
+59-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:13:9-35
+60        android:testOnly="true"
+61        android:theme="@style/AppTheme"
+61-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:14:9-40
+62        android:usesCleartextTraffic="true" >
+62-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:16:9-44
+63        <activity android:name="com.sample.kakao.SecondActivity" />
+63-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:18:9-51
+63-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:18:19-49
+64        <activity android:name="com.sample.kakao.KakaoLogin" />
+64-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:19:9-47
+64-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:19:19-45
+65        <activity android:name="com.sample.kakao.NaverLogin" />
+65-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:20:9-47
+65-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:20:19-45
+66        <activity android:name="com.sample.kakao.GoogleLogin" />
+66-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:21:9-48
+66-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:21:19-46
+67        <activity android:name="com.sample.kakao.ThirdActivity" />
+67-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:22:9-50
+67-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:22:19-48
+68        <activity android:name="com.sample.kakao.QR_code" />
+68-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:23:9-44
+68-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:23:19-42
+69        <activity android:name="com.sample.kakao.menu_list" />
+69-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:24:9-46
+69-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:24:19-44
+70        <activity android:name="com.sample.kakao.restaurant_list" />
+70-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:25:9-52
+70-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:25:19-50
+71
+72        <meta-data
+72-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:26:9-28:52
+73            android:name="com.kakao.sdk.AppKey"
+73-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:27:13-48
+74            android:value="@string/kakao_app_key" />
+74-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:28:13-50
+75
+76        <activity android:name="com.sample.kakao.MainActivity" >
+76-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:29:9-35:20
+76-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:29:19-47
+77            <intent-filter>
+77-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:30:13-34:29
+78                <action android:name="android.intent.action.MAIN" />
+78-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:31:17-69
+78-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:31:25-66
+79
+80                <category android:name="android.intent.category.LAUNCHER" />
+80-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:33:17-77
+80-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:33:27-74
+81            </intent-filter>
+82        </activity>
+83        <activity
+83-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:37:9-47:16
+84            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+84-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:37:19-76
+85            android:launchMode="singleTask"
+85-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\8dc9150b3ee0dbb92dcdb1828c739f7a\jetified-v2-auth-2.4.2\AndroidManifest.xml:19:13-44
+86            android:theme="@style/TransparentCompat" >
+86-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\8dc9150b3ee0dbb92dcdb1828c739f7a\jetified-v2-auth-2.4.2\AndroidManifest.xml:20:13-53
+87            <intent-filter>
+87-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:38:10-46:25
+88                <action android:name="android.intent.action.VIEW" />
+88-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:39:13-65
+88-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:39:21-62
+89
+90                <category android:name="android.intent.category.DEFAULT" />
+90-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:40:13-72
+90-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:40:23-69
+91                <category android:name="android.intent.category.BROWSABLE" />
+91-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:41:13-74
+91-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:41:23-71
+92
+93                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
+94                <data
+94-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:44:13-45:74
+95                    android:host="oauth"
+95-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:44:19-39
+96                    android:scheme="kakao091a3ed42ce23c70dd86f5de8b4a96cf" />
+96-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:45:17-71
+97            </intent-filter>
+98        </activity>
+99        <activity
+99-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\8dc9150b3ee0dbb92dcdb1828c739f7a\jetified-v2-auth-2.4.2\AndroidManifest.xml:12:9-16:56
+100            android:name="com.kakao.sdk.auth.TalkAuthCodeActivity"
+100-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\8dc9150b3ee0dbb92dcdb1828c739f7a\jetified-v2-auth-2.4.2\AndroidManifest.xml:13:13-67
+101            android:exported="false"
+101-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\8dc9150b3ee0dbb92dcdb1828c739f7a\jetified-v2-auth-2.4.2\AndroidManifest.xml:14:13-37
+102            android:launchMode="singleTask"
+102-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\8dc9150b3ee0dbb92dcdb1828c739f7a\jetified-v2-auth-2.4.2\AndroidManifest.xml:15:13-44
+103            android:theme="@style/TransparentCompat" />
+103-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\8dc9150b3ee0dbb92dcdb1828c739f7a\jetified-v2-auth-2.4.2\AndroidManifest.xml:16:13-53
+104        <activity
+104-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:47:9-53:63
+105            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+105-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:48:13-74
+106            android:clearTaskOnLaunch="true"
+106-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:49:13-45
+107            android:screenOrientation="sensorLandscape"
+107-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:50:13-56
+108            android:stateNotNeeded="true"
+108-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:51:13-42
+109            android:theme="@style/zxing_CaptureTheme"
+109-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:52:13-54
+110            android:windowSoftInputMode="stateAlwaysHidden" />
+110-->[com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\1416f35d556e61418b95090f414817be\jetified-zxing-android-embedded-3.6.0\AndroidManifest.xml:53:13-60
+111        <activity
+111-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:27:9-44:20
+112            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+112-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:28:13-80
+113            android:excludeFromRecents="true"
+113-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:29:13-46
+114            android:exported="true"
+114-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:30:13-36
+115            android:launchMode="singleTask"
+115-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:31:13-44
+116            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+116-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:32:13-72
+117            <intent-filter>
+117-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:33:13-43:29
+118                <action android:name="android.intent.action.VIEW" />
+118-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:39:13-65
+118-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:39:21-62
+119
+120                <category android:name="android.intent.category.DEFAULT" />
+120-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:40:13-72
+120-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:40:23-69
+121                <category android:name="android.intent.category.BROWSABLE" />
+121-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:41:13-74
+121-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:41:23-71
+122
+123                <data
+123-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:44:13-45:74
+124                    android:host="firebase.auth"
+124-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:44:19-39
+125                    android:path="/"
+126                    android:scheme="genericidp" />
+126-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:45:17-71
+127            </intent-filter>
+128        </activity>
+129        <activity
+129-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:45:9-62:20
+130            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+130-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:46:13-79
+131            android:excludeFromRecents="true"
+131-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:47:13-46
+132            android:exported="true"
+132-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:48:13-36
+133            android:launchMode="singleTask"
+133-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:49:13-44
+134            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+134-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:50:13-72
+135            <intent-filter>
+135-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:51:13-61:29
+136                <action android:name="android.intent.action.VIEW" />
+136-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:39:13-65
+136-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:39:21-62
+137
+138                <category android:name="android.intent.category.DEFAULT" />
+138-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:40:13-72
+138-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:40:23-69
+139                <category android:name="android.intent.category.BROWSABLE" />
+139-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:41:13-74
+139-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:41:23-71
+140
+141                <data
+141-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:44:13-45:74
+142                    android:host="firebase.auth"
+142-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:44:19-39
+143                    android:path="/"
+144                    android:scheme="recaptcha" />
+144-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:45:17-71
+145            </intent-filter>
+146        </activity>
+147
+148        <service
+148-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:64:9-73:19
+149            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
+149-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:65:13-101
+150            android:enabled="true"
+150-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:66:13-35
+151            android:exported="false" >
+151-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:67:13-37
+152            <intent-filter>
+152-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:68:13-72:29
+153                <action android:name="com.google.firebase.auth.api.gms.service.START" />
+153-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:69:17-89
+153-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:69:25-86
+154
+155                <category android:name="android.intent.category.DEFAULT" />
+155-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:40:13-72
+155-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:40:23-69
+156            </intent-filter>
+157        </service>
+158        <service
+158-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:74:9-80:19
+159            android:name="com.google.firebase.components.ComponentDiscoveryService"
+159-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:75:13-84
+160            android:directBootAware="true"
+160-->[com.google.firebase:firebase-common:19.5.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:35:13-43
+161            android:exported="false" >
+161-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:76:13-37
+162            <meta-data
+162-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:77:13-79:85
+163                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+163-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:78:17-109
+164                android:value="com.google.firebase.components.ComponentRegistrar" />
+164-->[com.google.firebase:firebase-auth:20.0.3] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\805d61b750045d07d6274e241761f908\jetified-firebase-auth-20.0.3\AndroidManifest.xml:79:17-82
+165            <meta-data
+165-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\4ffa197dfdf4bdbf00a84b3aeb275a0f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:30:13-32:85
+166                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+166-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\4ffa197dfdf4bdbf00a84b3aeb275a0f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:31:17-139
+167                android:value="com.google.firebase.components.ComponentRegistrar" />
+167-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\4ffa197dfdf4bdbf00a84b3aeb275a0f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:32:17-82
+168            <meta-data
+168-->[com.google.firebase:firebase-installations:16.3.5] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\e7656dc500e26d5985fed9d364afdc23\jetified-firebase-installations-16.3.5\AndroidManifest.xml:18:13-20:85
+169                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+169-->[com.google.firebase:firebase-installations:16.3.5] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\e7656dc500e26d5985fed9d364afdc23\jetified-firebase-installations-16.3.5\AndroidManifest.xml:19:17-127
+170                android:value="com.google.firebase.components.ComponentRegistrar" />
+170-->[com.google.firebase:firebase-installations:16.3.5] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\e7656dc500e26d5985fed9d364afdc23\jetified-firebase-installations-16.3.5\AndroidManifest.xml:20:17-82
+171            <!--
+172                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
+173                clients to use it as well, by defining this registrar in their own core/common library.
+174            -->
+175            <meta-data
+175-->[com.google.firebase:firebase-common:19.5.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:43:13-45:85
+176                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
+176-->[com.google.firebase:firebase-common:19.5.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:44:17-121
+177                android:value="com.google.firebase.components.ComponentRegistrar" />
+177-->[com.google.firebase:firebase-common:19.5.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:45:17-82
+178        </service>
+179
+180        <activity
+180-->[com.google.android.gms:play-services-auth:19.0.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\3661d6e03c02dfb85a2d3c1c678ac711\jetified-play-services-auth-19.0.0\AndroidManifest.xml:23:9-27:75
+181            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+181-->[com.google.android.gms:play-services-auth:19.0.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\3661d6e03c02dfb85a2d3c1c678ac711\jetified-play-services-auth-19.0.0\AndroidManifest.xml:24:13-93
+182            android:excludeFromRecents="true"
+182-->[com.google.android.gms:play-services-auth:19.0.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\3661d6e03c02dfb85a2d3c1c678ac711\jetified-play-services-auth-19.0.0\AndroidManifest.xml:25:13-46
+183            android:exported="false"
+183-->[com.google.android.gms:play-services-auth:19.0.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\3661d6e03c02dfb85a2d3c1c678ac711\jetified-play-services-auth-19.0.0\AndroidManifest.xml:26:13-37
+184            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+184-->[com.google.android.gms:play-services-auth:19.0.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\3661d6e03c02dfb85a2d3c1c678ac711\jetified-play-services-auth-19.0.0\AndroidManifest.xml:27:13-72
+185        <!--
+186            Service handling Google Sign-In user revocation. For apps that do not integrate with
+187            Google Sign-In, this service will never be started.
+188        -->
+189        <service
+189-->[com.google.android.gms:play-services-auth:19.0.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\3661d6e03c02dfb85a2d3c1c678ac711\jetified-play-services-auth-19.0.0\AndroidManifest.xml:33:9-37:51
+190            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+190-->[com.google.android.gms:play-services-auth:19.0.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\3661d6e03c02dfb85a2d3c1c678ac711\jetified-play-services-auth-19.0.0\AndroidManifest.xml:34:13-89
+191            android:exported="true"
+191-->[com.google.android.gms:play-services-auth:19.0.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\3661d6e03c02dfb85a2d3c1c678ac711\jetified-play-services-auth-19.0.0\AndroidManifest.xml:35:13-36
+192            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+192-->[com.google.android.gms:play-services-auth:19.0.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\3661d6e03c02dfb85a2d3c1c678ac711\jetified-play-services-auth-19.0.0\AndroidManifest.xml:36:13-107
+193            android:visibleToInstantApps="true" />
+193-->[com.google.android.gms:play-services-auth:19.0.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\3661d6e03c02dfb85a2d3c1c678ac711\jetified-play-services-auth-19.0.0\AndroidManifest.xml:37:13-48
+194
+195        <activity
+195-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:17:9-19:67
+196            android:name="com.nhn.android.naverlogin.ui.OAuthLoginActivity"
+196-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:18:13-76
+197            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+197-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:19:13-64
+198        <activity
+198-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:20:9-23:47
+199            android:name="com.nhn.android.naverlogin.ui.OAuthLoginInAppBrowserActivity"
+199-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:21:13-88
+200            android:configChanges="orientation|screenSize"
+200-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:22:13-59
+201            android:label="OAuth2.0 In-app" />
+201-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:23:13-44
+202        <activity
+202-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:24:9-40:20
+203            android:name="com.nhn.android.naverlogin.ui.OAuthCustomTabActivity"
+203-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:25:13-80
+204            android:configChanges="orientation|screenSize"
+204-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:26:13-59
+205            android:launchMode="singleTask"
+205-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:27:13-44
+206            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+206-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:28:13-72
+207            <intent-filter>
+207-->[:naveridlogin_android_sdk_4.2.6] C:\Users\pms69\AndroidStudioProjects\KakaLogin\naveridlogin_android_sdk_4.2.6\build\.transforms\05e4159ed1b22232567b68e27c67e4d0\jetified-naveridlogin_android_sdk_4.2.6\AndroidManifest.xml:29:13-39:29
+208                <action android:name="android.intent.action.VIEW" />
+208-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:39:13-65
+208-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:39:21-62
+209
+210                <category android:name="android.intent.category.DEFAULT" />
+210-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:40:13-72
+210-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:40:23-69
+211                <category android:name="android.intent.category.BROWSABLE" />
+211-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:41:13-74
+211-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:41:23-71
+212                <!-- Intent URL 에서 로그인 액티비티를 실행하기 위해 설정 -->
+213                <data
+213-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:44:13-45:74
+214                    android:host="authorize"
+214-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:44:19-39
+215                    android:path="/"
+216                    android:scheme="naver3rdpartylogin" />
+216-->C:\Users\pms69\AndroidStudioProjects\KakaLogin\app\src\main\AndroidManifest.xml:45:17-71
+217            </intent-filter>
+218        </activity>
+219
+220        <receiver
+220-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:29:9-33:20
+221            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+221-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:30:13-85
+222            android:enabled="true"
+222-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:31:13-35
+223            android:exported="false" >
+223-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:32:13-37
+224        </receiver>
+225
+226        <service
+226-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:35:9-38:40
+227            android:name="com.google.android.gms.measurement.AppMeasurementService"
+227-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:36:13-84
+228            android:enabled="true"
+228-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:37:13-35
+229            android:exported="false" />
+229-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:38:13-37
+230        <service
+230-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:39:9-43:72
+231            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+231-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:40:13-87
+232            android:enabled="true"
+232-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:41:13-35
+233            android:exported="false"
+233-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:42:13-37
+234            android:permission="android.permission.BIND_JOB_SERVICE" />
+234-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\67e0b97d3ac1c33acaaf232548a0f25b\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:43:13-69
+235
+236        <provider
+236-->[com.google.firebase:firebase-common:19.5.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:26:9-31:39
+237            android:name="com.google.firebase.provider.FirebaseInitProvider"
+237-->[com.google.firebase:firebase-common:19.5.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:27:13-77
+238            android:authorities="com.sample.kakao.firebaseinitprovider"
+238-->[com.google.firebase:firebase-common:19.5.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:28:13-72
+239            android:directBootAware="true"
+239-->[com.google.firebase:firebase-common:19.5.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:29:13-43
+240            android:exported="false"
+240-->[com.google.firebase:firebase-common:19.5.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:30:13-37
+241            android:initOrder="100" />
+241-->[com.google.firebase:firebase-common:19.5.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:31:13-36
+242
+243        <activity
+243-->[com.kakao.sdk:auth:1.27.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\87284a709b0843ab94f818e79b81ce6b\jetified-auth-1.27.0\AndroidManifest.xml:12:9-19:20
+244            android:name="com.kakao.auth.authorization.authcode.KakaoWebViewActivity"
+244-->[com.kakao.sdk:auth:1.27.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\87284a709b0843ab94f818e79b81ce6b\jetified-auth-1.27.0\AndroidManifest.xml:13:13-86
+245            android:configChanges="orientation|screenSize"
+245-->[com.kakao.sdk:auth:1.27.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\87284a709b0843ab94f818e79b81ce6b\jetified-auth-1.27.0\AndroidManifest.xml:14:13-59
+246            android:exported="false"
+246-->[com.kakao.sdk:auth:1.27.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\87284a709b0843ab94f818e79b81ce6b\jetified-auth-1.27.0\AndroidManifest.xml:15:13-37
+247            android:label="@string/com_kakao_login_button"
+247-->[com.kakao.sdk:auth:1.27.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\87284a709b0843ab94f818e79b81ce6b\jetified-auth-1.27.0\AndroidManifest.xml:16:13-59
+248            android:launchMode="singleTop"
+248-->[com.kakao.sdk:auth:1.27.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\87284a709b0843ab94f818e79b81ce6b\jetified-auth-1.27.0\AndroidManifest.xml:17:13-43
+249            android:windowSoftInputMode="adjustResize" >
+249-->[com.kakao.sdk:auth:1.27.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\87284a709b0843ab94f818e79b81ce6b\jetified-auth-1.27.0\AndroidManifest.xml:18:13-55
+250        </activity>
+251        <activity
+251-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\0efd6e16c430e6784fadd19e6d5d8f7d\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+252            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+252-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\0efd6e16c430e6784fadd19e6d5d8f7d\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+253            android:exported="false"
+253-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\0efd6e16c430e6784fadd19e6d5d8f7d\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+254            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+254-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\0efd6e16c430e6784fadd19e6d5d8f7d\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+255
+256        <meta-data
+256-->[com.google.android.gms:play-services-basement:17.1.1] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\7c8e8e3cc3d5968f46a2148fd8060f5d\jetified-play-services-basement-17.1.1\AndroidManifest.xml:23:9-25:69
+257            android:name="com.google.android.gms.version"
+257-->[com.google.android.gms:play-services-basement:17.1.1] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\7c8e8e3cc3d5968f46a2148fd8060f5d\jetified-play-services-basement-17.1.1\AndroidManifest.xml:24:13-58
+258            android:value="@integer/google_play_services_version" />
+258-->[com.google.android.gms:play-services-basement:17.1.1] C:\Users\pms69\.gradle\caches\transforms-2\files-2.1\7c8e8e3cc3d5968f46a2148fd8060f5d\jetified-play-services-basement-17.1.1\AndroidManifest.xml:25:13-66
+259    </application>
+260
+261</manifest>

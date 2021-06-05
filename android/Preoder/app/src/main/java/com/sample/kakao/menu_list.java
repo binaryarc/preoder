@@ -1,51 +1,66 @@
 package com.sample.kakao;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.collection.CircularArray;
+
+import static android.media.CamcorderProfile.get;
+
 public class menu_list extends AppCompatActivity {
     Intent intent;
-    String brand_name,location_name;
+    String brand_name, location_name;
 
-    String[] menu_name={"빅맥 버거","빅맥 버거 세트","상하이 버거","상하이 버거 세트","1955 버거","1955 버거 세트"};
-    String[] menu_price={"4,600","5,900","4,600","5,900","5,700","7,200"};
-    Integer[] pic={R.drawable.bicmac,R.drawable.bicmac_set,R.drawable.shanghai,R.drawable.shanghai_set,
-                        R.drawable.burger1955,R.drawable.burger1955_set};
+    ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+    String[] menu_name = {"빅맥 버거", "빅맥 버거 세트", "상하이 버거", "상하이 버거 세트", "1955 버거", "1955 버거 세트"};
+    String[] menu_price = {"4,600", "5,900", "4,600", "5,900", "5,700", "7,200"};
+    Integer[] pic = {R.drawable.bicmac, R.drawable.bicmac_set, R.drawable.shanghai, R.drawable.shanghai_set,
+            R.drawable.burger1955, R.drawable.burger1955_set};
     String selected_menu = new String("");
     TextView tv_name;
     ImageButton menu_qr_btn;
     Button back_btn;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_list);
-        tv_name = (TextView)findViewById(R.id.menu_location_name);
+        tv_name = (TextView) findViewById(R.id.menu_location_name);
         menu_qr_btn = (ImageButton) findViewById(R.id.menu_qr_btn);
-        back_btn = (Button)findViewById(R.id.store_back_btn);
+        back_btn = (Button) findViewById(R.id.store_back_btn);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(),restaurant_list.class);
-                startActivityForResult(intent,0);
+                intent = new Intent(getApplicationContext(), restaurant_list.class);
+                startActivityForResult(intent, 0);
                 finish();
             }
         });
@@ -56,48 +71,115 @@ public class menu_list extends AppCompatActivity {
         menu_qr_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(),QR_code.class);
-                intent.putExtra("menus",selected_menu);
-                startActivityForResult(intent,2);
+                intent = new Intent(getApplicationContext(), QR_code.class);
+                intent.putExtra("menus", selected_menu);
+                startActivityForResult(intent, 2);
                 finish();
             }
         });
         ListView list = (ListView) findViewById(R.id.menu_list);
-        CustomList adapt = new CustomList(menu_list.this);
+
+        CustomList adapt = new CustomList(menu_list.this, new ArrayList<>());
         list.setAdapter(adapt);
         list.setOnItemClickListener((parent, view, position, id) -> {
 
-            selected_menu += menu_name[position]+", ";
+            TextView temp_tv1 = view.findViewById(R.id.name1);
+            selected_menu +=temp_tv1.getText().toString() + ", ";
             view.setBackgroundColor(Color.GRAY);
             TextView temp_tv = view.findViewById(R.id.name3);
             Integer temp_i = Integer.parseInt(temp_tv.getText().toString());
             temp_i++;
             temp_tv.setText(temp_i.toString());
         });
-    }
-    public class CustomList extends ArrayAdapter<String> {
-        private Activity context;
 
-        public CustomList(Activity context) {
-            super(context, R.layout.list_item, menu_name);
+        executorService.submit(() -> {
+            List<McDonaldBurger> burgers = getBurgers();
+            adapt.update(burgers);
+        });
+    }
+
+    public class CustomList extends BaseAdapter {
+        public Activity context;
+        public List<McDonaldBurger> burgers;
+
+        public CustomList(Activity context, List<McDonaldBurger> burgers) {
             this.context = context;
+            this.burgers = burgers;
+        }
+
+        @Override
+        public int getCount() {
+            return burgers.size();
+        }
+
+        @Nullable
+        @Override
+        public McDonaldBurger getItem(int position) {
+            return burgers.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        public void update(List<McDonaldBurger> burgers) {
+            this.burgers.addAll(burgers);
+            this.context.runOnUiThread(this::notifyDataSetChanged);
+        }
+
+        private class ViewHolder {
+            ImageView imageView;
+            TextView name;
+            TextView price;
         }
 
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater inflater=context.getLayoutInflater();
-            View rowView = inflater.inflate(R.layout.list_item,null,true);
-            ImageView menu_img=(ImageView)rowView.findViewById(R.id.list_img);
-            TextView tv_menu_name=(TextView)rowView.findViewById(R.id.name1);
-            TextView tv_menu_price=(TextView)rowView.findViewById(R.id.name2);
-            TextView tv3=(TextView)rowView.findViewById(R.id.name3);
-            menu_img.setImageResource(pic[position]);
-            tv_menu_name.setText(menu_name[position]);
-            tv_menu_price.setText(menu_price[position]);
-            tv3.setText("0");
+            if (convertView == null) {
+                convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+            }
 
-            return rowView;
+            ViewHolder viewHolder = new ViewHolder();
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.list_img);
+            viewHolder.name = (TextView) convertView.findViewById(R.id.name1);
+            viewHolder.price = (TextView) convertView.findViewById(R.id.name2);
+            convertView.setTag(viewHolder);
+
+            McDonaldBurger burger = getItem(position);
+            if (burger != null) {
+                Glide.with(context).load(burger.imageUrl).into(viewHolder.imageView);
+                viewHolder.name.setText(burger.name);
+                viewHolder.price.setText(burger.price);
+            }
+            return convertView;
         }
+    }
+
+    public List<McDonaldBurger> getBurgers() {
+        Document doc;
+        List<McDonaldBurger> burgers = new ArrayList<>();
+
+        try {
+            doc = Jsoup.connect("https://www.mcdelivery.co.kr/kr/browse/menu.html?daypartId=1&catId=11").get();
+
+            Element content = null;
+            for (int i = 0; i < 24; i++) {
+                McDonaldBurger burger = new McDonaldBurger();
+
+                content = doc.select("div.row.row-narrow div.product-card.product-card--standard div.panel-body h5").get(i);
+                burger.name = content.text();
+                content = doc.select("div.product-info div.product-details div.product-cost span").get(i);
+                burger.price = content.text();
+                content = doc.select("div.row.row-narrow div.product-card.product-card--standard div.panel-body").get(i);
+                burger.imageUrl = content.child(0).absUrl("src");
+
+                burgers.add(burger);
+            }
+        } catch (Exception ignored) {
+        }
+
+        return burgers;
     }
 }
