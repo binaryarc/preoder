@@ -30,6 +30,10 @@ public class restaurant_list extends AppCompatActivity {
     Integer[] pic = {R.drawable.mcdo, R.drawable.lotteria,R.drawable.momstouch};
     Intent intent;
     ImageButton back_btn,map_view_btn;
+    private static ArrayList<String> name_list;
+    private static ArrayList<String> addr_list;
+    private static ArrayList<Double> lati_list;
+    private static ArrayList<Double> longi_list;
 
 
     @Override
@@ -42,32 +46,34 @@ public class restaurant_list extends AppCompatActivity {
 
 
         intent = getIntent();
+        if((ArrayList<String>)intent.getSerializableExtra("name_list") !=null)
+        {
+            name_list = (ArrayList<String>)intent.getSerializableExtra("name_list");
+            name = new String[name_list.size()];
+            name_list.toArray(name);
 
-        ArrayList<String> name_list = (ArrayList<String>)intent.getSerializableExtra("name_list");
-        name = new String[name_list.size()];
-        name_list.toArray(name);
 
+            addr_list = (ArrayList<String>)intent.getSerializableExtra("addr_list");
+            addr = new String[addr_list.size()];
+            addr_list.toArray(addr);
 
-        ArrayList<String> addr_list = (ArrayList<String>)intent.getSerializableExtra("addr_list");
-        addr = new String[addr_list.size()];
-        addr_list.toArray(addr);
+            //ArrayList<Double> temp_lati_list = (ArrayList<Double>)intent.getSerializableExtra("lati_list");
+            lati_list = (ArrayList<Double>)intent.getSerializableExtra("lati_list");
+            latitude = new Double[lati_list.size()];
+            lati_list.toArray(latitude);
 
-        //ArrayList<Double> temp_lati_list = (ArrayList<Double>)intent.getSerializableExtra("lati_list");
-        ArrayList<Double> lati_list = (ArrayList<Double>)intent.getSerializableExtra("lati_list");
-        latitude = new Double[lati_list.size()];
-        lati_list.toArray(latitude);
-
-        //ArrayList<Double> temp_longi_list = (ArrayList<Double>)intent.getSerializableExtra("longi_list");
-        ArrayList<Double> longi_list = (ArrayList<Double>)intent.getSerializableExtra("longi_list");
-        longitude = new Double[longi_list.size()];
-        longi_list.toArray(longitude);
+            //ArrayList<Double> temp_longi_list = (ArrayList<Double>)intent.getSerializableExtra("longi_list");
+            longi_list = (ArrayList<Double>)intent.getSerializableExtra("longi_list");
+            longitude = new Double[longi_list.size()];
+            longi_list.toArray(longitude);
+        }
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(), Nmaps_test.class);
                 startActivity(intent);
-                finish();
+                restaurant_list.this.finish();
             }
         });
 
@@ -82,7 +88,7 @@ public class restaurant_list extends AppCompatActivity {
                 intent.putExtra("lati_list",lati_list);
                 intent.putExtra("longi_list",longi_list);
                 startActivity(intent);
-                finish();
+                restaurant_list.this.finish();
             }
         });
 
@@ -93,6 +99,12 @@ public class restaurant_list extends AppCompatActivity {
             intent = new Intent(getApplicationContext(), menu_list.class);
             intent.putExtra("location_name", name[position]);
             intent.putExtra("brand_name",brand[position]);
+
+            intent.putExtra("name_list",name_list);
+            intent.putExtra("addr_list",addr_list);
+
+            intent.putExtra("lati_list",lati_list);
+            intent.putExtra("longi_list",longi_list);
             startActivity(intent);
 
         });

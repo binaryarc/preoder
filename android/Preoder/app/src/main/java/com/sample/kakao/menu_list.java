@@ -43,7 +43,10 @@ public class menu_list extends AppCompatActivity {
     TextView tv_name;
     ImageButton menu_qr_btn;
     Button back_btn;
-
+    ArrayList<String> name_list;
+    ArrayList<String> addr_list;
+    ArrayList<Double> lati_list;
+    ArrayList<Double> longi_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,25 +55,41 @@ public class menu_list extends AppCompatActivity {
         tv_name = (TextView) findViewById(R.id.menu_location_name);
         menu_qr_btn = (ImageButton) findViewById(R.id.menu_qr_btn);
         back_btn = (Button) findViewById(R.id.store_back_btn);
+
+        intent = getIntent();
+        brand_name = intent.getStringExtra("brand_name");
+        location_name = intent.getStringExtra("location_name");
+        if((ArrayList<String>)intent.getSerializableExtra("name_list") != null)
+        {
+            name_list = (ArrayList<String>)intent.getSerializableExtra("name_list");
+            addr_list = (ArrayList<String>)intent.getSerializableExtra("addr_list");
+            lati_list = (ArrayList<Double>)intent.getSerializableExtra("lati_list");
+            longi_list = (ArrayList<Double>)intent.getSerializableExtra("longi_list");
+        }
+
+
+
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(), restaurant_list.class);
-                startActivityForResult(intent, 0);
-                finish();
+                intent.putExtra("name_list",name_list);
+                intent.putExtra("addr_list",addr_list);
+                intent.putExtra("lati_list",lati_list);
+                intent.putExtra("longi_list",longi_list);
+                startActivity(intent);
+                menu_list.this.finish();
             }
         });
-        intent = getIntent();
-        brand_name = intent.getStringExtra("brand_name");
-        location_name = intent.getStringExtra("location_name");
+
         tv_name.setText(location_name);
         menu_qr_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(), QR_code.class);
                 intent.putExtra("menus", selected_menu);
-                startActivityForResult(intent, 2);
-                finish();
+                startActivity(intent);
+                menu_list.this.finish();
             }
         });
         ListView list = (ListView) findViewById(R.id.menu_list);
