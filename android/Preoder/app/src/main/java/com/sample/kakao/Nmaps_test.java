@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -287,7 +286,7 @@ public class Nmaps_test extends AppCompatActivity {
                     mk_arr.add(mk);
                     //tv.setText(R_nameList.toString());
                     //tv2.setText(R_latitudeList.toString() + "\n" + R_longitudeList.toString());
-                    Toast.makeText(Nmaps_test.this,R_latitudeList.size()+"개 표시", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(Nmaps_test.this,R_latitudeList.size()+"개 표시", Toast.LENGTH_LONG).show();
 
                 }
             }

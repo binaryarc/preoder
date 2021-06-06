@@ -43,10 +43,10 @@ public class menu_list extends AppCompatActivity {
     TextView tv_name;
     ImageButton menu_qr_btn;
     Button back_btn;
-    ArrayList<String> name_list;
-    ArrayList<String> addr_list;
-    ArrayList<Double> lati_list;
-    ArrayList<Double> longi_list;
+    private static ArrayList<String> name_list;
+    private static ArrayList<String> addr_list;
+    private static ArrayList<Double> lati_list;
+    private static ArrayList<Double> longi_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +88,10 @@ public class menu_list extends AppCompatActivity {
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(), QR_code.class);
                 intent.putExtra("menus", selected_menu);
+                intent.putExtra("name_list",name_list);
+                intent.putExtra("addr_list",addr_list);
+                intent.putExtra("lati_list",lati_list);
+                intent.putExtra("longi_list",longi_list);
                 startActivity(intent);
                 menu_list.this.finish();
             }
