@@ -51,6 +51,7 @@ public class Nmaps_test extends AppCompatActivity {
     private static double[] lati_arr,longi_arr;
     private static String[] name,addr;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +76,8 @@ public class Nmaps_test extends AppCompatActivity {
         if(R_nameList !=null && getIntent() !=null)
         {
             //tv.setText(name[0]);
+            R_latitudeList.clear();
+            R_longitudeList.clear();
 
             R_locationList = (ArrayList<String>)intent.getSerializableExtra("addr_list");
             R_latitudeList = (ArrayList<Double>)intent.getSerializableExtra("lati_list");
@@ -134,6 +137,8 @@ public class Nmaps_test extends AppCompatActivity {
                         //R_namList, R_locationList 만들어짐
                         if(!R_locationList.isEmpty())
                         {
+                            R_latitudeList.clear();
+                            R_longitudeList.clear();
                             for(int i=0;i<R_locationList.size();i++)
                             {
                                 MA2.set_input(R_locationList.get(i));
@@ -150,14 +155,15 @@ public class Nmaps_test extends AppCompatActivity {
                         }
 
                         Intent intent = new Intent(getApplicationContext(), restaurant_list.class);
+
                         intent.putExtra("name_list",R_nameList);
                         intent.putExtra("addr_list",R_locationList);
                         intent.putExtra("lati_list",R_latitudeList);
                         intent.putExtra("longi_list",R_longitudeList);
 
+
                         startActivity(intent);
-                        R_latitudeList.clear();
-                        R_longitudeList.clear();
+
                         finish();
                     }//run()
                 };
@@ -265,11 +271,10 @@ public class Nmaps_test extends AppCompatActivity {
 
         if(R_latitudeList.size()>0)
         {
+            //tv.setText(R_nameList.toString() + "\n" + R_locationList.toString());
+            //tv2.setText(R_latitudeList.toString() + "\n" + R_longitudeList.toString());
             ArrayList<Marker> mk_arr = new ArrayList<>();
-
-
-
-            for(int i=0;i <R_latitudeList.size();i++)
+            for(int i=0;i <R_nameList.size();i++)
             {
                 Marker mk = new Marker();
                 if(R_latitudeList.get(i)!=null && R_longitudeList.get(i)!=null)
