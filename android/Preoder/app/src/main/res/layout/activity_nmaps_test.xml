@@ -45,30 +45,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Button
-        android:text="Json_parse"
-        android:id="@+id/parse_btn"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="240dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        ></Button>
+
+
 
     <Button
-        android:text="get_json_btn"
-        android:id="@+id/get_json_btn"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="170dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        ></Button>
-
-    <Button
-        android:id="@+id/near_list_btn"
+        android:id="@+id/search_btn"
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:layout_marginEnd="50dp"

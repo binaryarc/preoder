@@ -46,12 +46,12 @@
             android:layout_marginLeft="100dp"
             >
             <ImageButton
-                android:id="@+id/map_view"
+                android:id="@+id/map_view_btn"
                 android:layout_width="120px"
                 android:layout_height="120px"
                 android:src="@drawable/map_"
                 android:background="#ffffff"
-                ></ImageButton>
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
