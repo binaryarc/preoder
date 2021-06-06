@@ -106,6 +106,7 @@ public class restaurant_list extends AppCompatActivity {
             intent.putExtra("lati_list",lati_list);
             intent.putExtra("longi_list",longi_list);
             startActivity(intent);
+            restaurant_list.this.finish();
 
         });
     }
