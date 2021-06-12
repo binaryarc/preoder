@@ -87,6 +87,7 @@ public class menu_list extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(), QR_code.class);
+                intent.putExtra("location_name",location_name);
                 intent.putExtra("menus", selected_menu);
                 intent.putExtra("name_list",name_list);
                 intent.putExtra("addr_list",addr_list);
@@ -109,6 +110,8 @@ public class menu_list extends AppCompatActivity {
             Integer temp_i = Integer.parseInt(temp_tv.getText().toString());
             temp_i++;
             temp_tv.setText(temp_i.toString());
+
+
         });
 
         executorService.submit(() -> {
@@ -158,6 +161,9 @@ public class menu_list extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             if (convertView == null) {
                 convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+            }else
+            {
+
             }
 
             ViewHolder viewHolder = new ViewHolder();
@@ -168,6 +174,7 @@ public class menu_list extends AppCompatActivity {
 
             McDonaldBurger burger = getItem(position);
             if (burger != null) {
+
                 Glide.with(context).load(burger.imageUrl).into(viewHolder.imageView);
                 viewHolder.name.setText(burger.name);
                 viewHolder.price.setText(burger.price);

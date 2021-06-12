@@ -6,7 +6,7 @@
     android:padding="10dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:id="@+id/list_item"
+    android:id="@+id/list_item2"
     android:descendantFocusability="blocksDescendants"
     >
     <ImageView
@@ -46,8 +46,10 @@
             android:textColor="@android:color/black"
             android:id="@+id/name3"
             ></TextView>
-
     </LinearLayout>
-
+<ImageButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+       ></ImageButton>
 
 </LinearLayout>

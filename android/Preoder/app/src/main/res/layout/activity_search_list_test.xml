@@ -7,42 +7,67 @@
     android:layout_height="match_parent"
     tools:context=".Search_list_test">
 
-        <!-- 네이버 지도 -->
-        <fragment
-            android:id="@+id/map"
-            android:name="com.naver.maps.map.MapFragment"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+        <com.naver.maps.map.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            >
+        </com.naver.maps.map.MapView>
 
+        <!--디버깅용 텍스트뷰 -->
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="560dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="300dp"
+            android:layout_height="210dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="350dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="30dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="100dp"
+            android:text="검색"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
         <EditText
             android:id="@+id/editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="31dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="150dp"
+            android:layout_marginBottom="100dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
-            app:layout_constraintEnd_toStartOf="@+id/button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/map" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="19dp"
-            android:layout_marginBottom="153dp"
-            android:text="Button"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editText"
-            app:layout_constraintTop_toBottomOf="@+id/map" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
 

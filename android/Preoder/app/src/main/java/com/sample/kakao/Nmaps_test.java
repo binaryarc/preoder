@@ -30,25 +30,25 @@ import java.util.ArrayList;
 public class Nmaps_test extends AppCompatActivity {
 
     private MapView mapView;
-    private static final int LOCATION_PERMISSION_REQUEST_CODE =1000;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
     private static NaverMap naverMap;
-    private Geocoder geocoder ;
+    private Geocoder geocoder;
     private static String json_str;
     private MyAsyncTask MA = new MyAsyncTask();
     private MyAsyncTask2 MA2 = new MyAsyncTask2();
-    private static ArrayList<String>R_nameList;
-    private static ArrayList<String>R_locationList;
-    private static ArrayList<Double>R_latitudeList;
-    private static ArrayList<Double>R_longitudeList;
+    private static ArrayList<String> R_nameList;
+    private static ArrayList<String> R_locationList;
+    private static ArrayList<Double> R_latitudeList;
+    private static ArrayList<Double> R_longitudeList;
     Intent intent;
     String my_location_str;
     Button search_btn;
-    TextView tv,tv2,tv3;
+    TextView tv, tv2, tv3;
     EditText editText;
-    Double my_latitude,my_longitude;
-    private static double[] lati_arr,longi_arr;
-    private static String[] name,addr;
+    Double my_latitude, my_longitude;
+    private static double[] lati_arr, longi_arr;
+    private static String[] name, addr;
 
 
     @Override
@@ -59,33 +59,30 @@ public class Nmaps_test extends AppCompatActivity {
         search_btn = findViewById(R.id.search_btn);
         tv = findViewById(R.id.tv);
         tv2 = findViewById(R.id.tv2);
-        tv3= findViewById(R.id.tv3);
+        tv3 = findViewById(R.id.tv3);
         editText = findViewById(R.id.editText);
 
         //지도 사용권한 받기
-        locationSource = new FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE);
-        mapView = (MapView)findViewById(R.id.map_view);
+        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
+        mapView = (MapView) findViewById(R.id.map_view);
 //        Marker test_mk = new Marker();
 //        test_mk.setPosition(new LatLng(35.107,128.967));
 //        test_mk.setMap(naverMap);
 
 
         intent = getIntent();
-        R_nameList = (ArrayList<String>)intent.getSerializableExtra("name_list");
-        if(R_nameList !=null && getIntent() !=null)
-        {
+        R_nameList = (ArrayList<String>) intent.getSerializableExtra("name_list");
+        if (R_nameList != null && getIntent() != null) {
             //tv.setText(name[0]);
             R_latitudeList.clear();
             R_longitudeList.clear();
 
-            R_locationList = (ArrayList<String>)intent.getSerializableExtra("addr_list");
-            R_latitudeList = (ArrayList<Double>)intent.getSerializableExtra("lati_list");
-            R_longitudeList = (ArrayList<Double>)intent.getSerializableExtra("longi_list");
+            R_locationList = (ArrayList<String>) intent.getSerializableExtra("addr_list");
+            R_latitudeList = (ArrayList<Double>) intent.getSerializableExtra("lati_list");
+            R_longitudeList = (ArrayList<Double>) intent.getSerializableExtra("longi_list");
 
 
-
-
-        }else{
+        } else {
             R_nameList = new ArrayList<>();
             R_locationList = new ArrayList<>();
             R_latitudeList = new ArrayList<>();
@@ -99,29 +96,26 @@ public class Nmaps_test extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Thread thread = new Thread(){
-                    public void run(){
+                Thread thread = new Thread() {
+                    public void run() {
                         geocoder = new Geocoder(mapView.getContext());
                         my_latitude = locationSource.getLastLocation().getLatitude();
                         my_longitude = locationSource.getLastLocation().getLongitude();
                         //tv2.setText(my_latitude.toString()+"\n"+my_longitude.toString());
                         //자신의 위치 저장
                         try {
-                            my_location_str = geocoder.getFromLocation(my_latitude,my_longitude,1).toString();
+                            my_location_str = geocoder.getFromLocation(my_latitude, my_longitude, 1).toString();
                             //tv.setText(my_location_str);
                             String[] str_arr = my_location_str.split("=");
                             String[] str_arr_ = str_arr[6].split(",");
                             my_location_str = str_arr_[0];  //xx동
                             //tv2.setText(my_location_str);
-                        }catch(Exception e)
-                        {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        if(editText.getText().toString().equals("맥도날드") || editText.getText().toString().equals("롯데리아")||editText.getText().toString().equals("맘스터치"))
-                        {
-                            MA.set_input(my_location_str+" "+editText.getText().toString());
-                        }else
-                        {
+                        if (editText.getText().toString().charAt(0) == '맥' || editText.getText().toString().charAt(0) == '롯' || editText.getText().toString().charAt(0) == '맘') {
+                            MA.set_input(my_location_str + " " + editText.getText().toString());
+                        } else {
                             MA.set_input(editText.getText().toString());
                         }
                         //MA.set_input(editText.getText().toString());
@@ -134,12 +128,10 @@ public class Nmaps_test extends AppCompatActivity {
 
                         //tv.setText(R_nameList.toString() + "\n" + R_locationList.toString());
                         //R_namList, R_locationList 만들어짐
-                        if(!R_locationList.isEmpty())
-                        {
+                        if (!R_locationList.isEmpty()) {
                             R_latitudeList.clear();
                             R_longitudeList.clear();
-                            for(int i=0;i<R_locationList.size();i++)
-                            {
+                            for (int i = 0; i < R_locationList.size(); i++) {
                                 MA2.set_input(R_locationList.get(i));
                                 //MA2.set_input(R_locationList.get(i));
                                 MA2.doInBackground();
@@ -148,17 +140,16 @@ public class Nmaps_test extends AppCompatActivity {
                             }
 
                             //tv2.setText(R_latitudeList.toString() + "\n" + R_longitudeList.toString());
-                        }else
-                        {
+                        } else {
                             System.out.println("isEmpty");
                         }
 
                         Intent intent = new Intent(getApplicationContext(), restaurant_list.class);
 
-                        intent.putExtra("name_list",R_nameList);
-                        intent.putExtra("addr_list",R_locationList);
-                        intent.putExtra("lati_list",R_latitudeList);
-                        intent.putExtra("longi_list",R_longitudeList);
+                        intent.putExtra("name_list", R_nameList);
+                        intent.putExtra("addr_list", R_locationList);
+                        intent.putExtra("lati_list", R_latitudeList);
+                        intent.putExtra("longi_list", R_longitudeList);
 
 
                         startActivity(intent);
@@ -175,23 +166,20 @@ public class Nmaps_test extends AppCompatActivity {
     public static void JSONParse2(String json_str_)    //주소 결과
     {
 
-        try{
+        try {
             JSONObject jsonObject = new JSONObject(json_str_);
             JSONArray jsonArray = jsonObject.getJSONArray("addresses");
             //tv2.setText(json_str_);
-            for(int i=0;i<jsonArray.length();i++)
-            {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                if(jsonObject1.get("x") != null && jsonObject1.get("y") !=null)
-                {
+                if (jsonObject1.get("x") != null && jsonObject1.get("y") != null) {
 
                     R_latitudeList.add(Double.parseDouble(jsonObject1.get("y").toString()));
                     R_longitudeList.add(Double.parseDouble(jsonObject1.get("x").toString()));
                 }
             }
             //tv2.setText(R_latitudeList.toString() + "\n" + R_longitudeList.toString());
-        }catch(JSONException e)
-        {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -200,20 +188,18 @@ public class Nmaps_test extends AppCompatActivity {
     {
         R_nameList.clear();
         R_locationList.clear();
-        try{
+        try {
             JSONObject jsonObject = new JSONObject(json_str_);
             JSONArray jsonArray = jsonObject.getJSONArray("items");
 
-            for(int i=0;i<jsonArray.length();i++)
-            {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                if(jsonObject1.getString("title") != null &&
-                        (jsonObject1.getString("category").equals("양식>햄버거") || jsonObject1.getString("category").equals("음식점>치킨,닭강정") )&&
-                        jsonObject1.getString("address") != null)
-                {
-                    String getTitle =  jsonObject1.getString("title");
-                    String titleFilter = getTitle.replaceAll("<b>","");
-                    String title = titleFilter.replaceAll("</b>","");
+                if (jsonObject1.getString("title") != null &&
+                        (jsonObject1.getString("category").equals("양식>햄버거") || jsonObject1.getString("category").equals("음식점>치킨,닭강정")) &&
+                        jsonObject1.getString("address") != null) {
+                    String getTitle = jsonObject1.getString("title");
+                    String titleFilter = getTitle.replaceAll("<b>", "");
+                    String title = titleFilter.replaceAll("</b>", "");
                     String category = jsonObject1.getString("category");
                     String address = jsonObject1.getString("address");
                     String roadAddress = jsonObject1.getString("roadAddress");
@@ -222,17 +208,16 @@ public class Nmaps_test extends AppCompatActivity {
                 }
             }
             //tv.setText(R_nameList.toString()+"\n"+R_locationList.toString()+"\n");
-        }catch(JSONException e)
-        {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull @NotNull String[] permissions, @NonNull @NotNull int[] grantResults) {
         //권한획득 여부 확인
-        if(locationSource.onRequestPermissionsResult(requestCode,permissions,grantResults))
-        {
-            if(!locationSource.isActivated()){
+        if (locationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
+            if (!locationSource.isActivated()) {
                 naverMap.setLocationTrackingMode(LocationTrackingMode.None);
             }
             return;
@@ -252,11 +237,10 @@ public class Nmaps_test extends AppCompatActivity {
         naverMap.setLocationSource(locationSource);
         //위치 추적모드 내위치로 이동 카메라도 자기쪽으로
         naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-        naverMap.setLayerGroupEnabled(naverMap.LAYER_GROUP_BUILDING,true);
+        naverMap.setLayerGroupEnabled(naverMap.LAYER_GROUP_BUILDING, true);
 
 
-        //LatLng init_Position = new LatLng(35.106281,128.9661773);//하단역 2번출구
-
+        LatLng init_Position = new LatLng(35.106281,128.9661773);//하단역 2번출구
         //자신 위치로 카메라 이동
         //CameraUpdate cu = CameraUpdate.scrollTo(init_Position);
         //naverMap.moveCamera(cu);    //초기위치 하단역
@@ -268,18 +252,15 @@ public class Nmaps_test extends AppCompatActivity {
         uiSettings.setZoomControlEnabled(true); //zoom
         uiSettings.setLocationButtonEnabled(true);//현재위치 버튼
 
-        if(R_latitudeList.size()>0)
-        {
+        if (R_latitudeList.size() > 0) {
             //tv.setText(R_nameList.toString() + "\n" + R_locationList.toString());
             //tv2.setText(R_latitudeList.toString() + "\n" + R_longitudeList.toString());
             ArrayList<Marker> mk_arr = new ArrayList<>();
-            for(int i=0;i <R_nameList.size();i++)
-            {
+            for (int i = 0; i < R_nameList.size(); i++) {
                 Marker mk = new Marker();
-                if(R_latitudeList.get(i)!=null && R_longitudeList.get(i)!=null)
-                {
+                if (R_latitudeList.get(i) != null && R_longitudeList.get(i) != null) {
                     //Toast.makeText(Nmaps_test.this,i + " on map불림",Toast.LENGTH_LONG).show();
-                    mk.setPosition(new LatLng( R_latitudeList.get(i),R_longitudeList.get(i) ));
+                    mk.setPosition(new LatLng(R_latitudeList.get(i), R_longitudeList.get(i)));
                     mk.setTag(R_nameList.get(i));
                     //mk.setTag("맥도날드");
                     //mk.setCaptionText(R_nameList.get(i));
@@ -291,15 +272,14 @@ public class Nmaps_test extends AppCompatActivity {
                 }
             }
             InfoWindow infoWindow;
-            for(int i=0;i<mk_arr.size();i++)
-            {
+            for (int i = 0; i < mk_arr.size(); i++) {
                 infoWindow = new InfoWindow();
                 infoWindow.setAdapter(new InfoWindow.DefaultTextAdapter(this) {
                     @NonNull
                     @NotNull
                     @Override
                     public CharSequence getText(@NonNull @NotNull InfoWindow infoWindow) {
-                        return (CharSequence)infoWindow.getMarker().getTag();
+                        return (CharSequence) infoWindow.getMarker().getTag();
                     }
                 });
                 mk_arr.get(i).setMap(naverMap);
@@ -321,10 +301,5 @@ public class Nmaps_test extends AppCompatActivity {
 //        Marker test_mk = new Marker();
 //        test_mk.setPosition(new LatLng(35.107,128.967));
 //        test_mk.setMap(naverMap);
-
-
     }
-
-
-
 }
