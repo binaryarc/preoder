@@ -93,7 +93,12 @@ public class menu_list extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(), QR_code.class);
+<<<<<<< HEAD
                 intent.putParcelableArrayListExtra("burgers", selected_menu);
+=======
+                intent.putExtra("location_name",location_name);
+                intent.putExtra("menus", selected_menu);
+>>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
                 intent.putExtra("name_list",name_list);
                 intent.putExtra("addr_list",addr_list);
                 intent.putExtra("lati_list",lati_list);
@@ -107,6 +112,7 @@ public class menu_list extends AppCompatActivity {
         CustomList adapt = new CustomList(menu_list.this, new ArrayList<>());
         list.setAdapter(adapt);
         list.setOnItemClickListener((parent, view, position, id) -> {
+<<<<<<< HEAD
             McDonaldBurger item = (McDonaldBurger) list.getItemAtPosition(position);
             if (!selected_menu.contains(item)) {
                 item.count++;
@@ -119,6 +125,18 @@ public class menu_list extends AppCompatActivity {
                 }
             }
             adapt.notifyDataSetChanged();
+=======
+
+            TextView temp_tv1 = view.findViewById(R.id.name1);
+            selected_menu +=temp_tv1.getText().toString() + ", ";
+            view.setBackgroundColor(Color.GRAY);
+            TextView temp_tv = view.findViewById(R.id.name3);
+            Integer temp_i = Integer.parseInt(temp_tv.getText().toString());
+            temp_i++;
+            temp_tv.setText(temp_i.toString());
+
+
+>>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
         });
 
         executorService.submit(() -> {
@@ -170,6 +188,9 @@ public class menu_list extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             if (convertView == null) {
                 convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+            }else
+            {
+
             }
 
             ViewHolder viewHolder = new ViewHolder();
@@ -182,6 +203,7 @@ public class menu_list extends AppCompatActivity {
 
             McDonaldBurger burger = getItem(position);
             if (burger != null) {
+
                 Glide.with(context).load(burger.imageUrl).into(viewHolder.imageView);
                 viewHolder.name.setText(burger.name);
                 viewHolder.price.setText(burger.price);

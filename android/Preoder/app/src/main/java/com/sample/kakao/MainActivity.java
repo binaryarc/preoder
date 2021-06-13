@@ -149,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
 
             finish();
-
         }
 
     }
@@ -199,13 +198,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     private boolean HasGoogleSession() {
-
         if (mGoogleLoginModule.getCurrentUser() == null) {
-
             return false;
         }
         return true;
-
     }
 
 
@@ -217,11 +213,8 @@ public class MainActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         if (result) {
-
             Toast.makeText(getApplicationContext(), "로그인 성공!", Toast.LENGTH_SHORT).show();
-
             startActivity(intent);;
-
             finish();
 
         }

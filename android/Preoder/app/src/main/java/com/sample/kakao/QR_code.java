@@ -21,18 +21,19 @@ public class QR_code extends AppCompatActivity {
     String menus;
     Intent intent;
     ImageView iv;
-    TextView tv;
+    TextView tv,tv2;    //tv1은 qr코드 정보, tv2는 식당이름
     Button btn;
     private static ArrayList<String> name_list;
     private static ArrayList<String> addr_list;
     private static ArrayList<Double> lati_list;
     private static ArrayList<Double> longi_list;
-
+    String location_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_code);
         tv=(TextView)findViewById(R.id.qr_info);
+        tv2=(TextView)findViewById(R.id.restaurant_name);
         intent = getIntent();
 
         menus = intent.getStringExtra("menus");
@@ -50,12 +51,13 @@ public class QR_code extends AppCompatActivity {
 
         if((ArrayList<String>)intent.getSerializableExtra("name_list") != null)
         {
+            location_name = intent.getStringExtra("location_name");
             name_list = (ArrayList<String>)intent.getSerializableExtra("name_list");
             addr_list = (ArrayList<String>)intent.getSerializableExtra("addr_list");
             lati_list = (ArrayList<Double>)intent.getSerializableExtra("lati_list");
             longi_list = (ArrayList<Double>)intent.getSerializableExtra("longi_list");
+            tv2.setText(location_name);
         }
-
 
         iv = (ImageView)findViewById(R.id.qrcode);
         btn = (Button)findViewById(R.id.back_btn);
@@ -72,7 +74,7 @@ public class QR_code extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(), restaurant_list.class);
+                intent = new Intent(getApplicationContext(), menu_list.class);
                 intent.putExtra("name_list",name_list);
                 intent.putExtra("addr_list",addr_list);
                 intent.putExtra("lati_list",lati_list);

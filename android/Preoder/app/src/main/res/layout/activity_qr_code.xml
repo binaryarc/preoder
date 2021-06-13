@@ -8,13 +8,23 @@
     tools:context=".QR_code"
     android:orientation="vertical"
     >
+    <TextView
+        android:text="식당 이름"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:id="@+id/restaurant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        
+        ></TextView>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/qrcode"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="200dp"
-
+        android:layout_marginTop="150dp"
         ></ImageView>
     <TextView
         android:layout_width="wrap_content"
