@@ -36,6 +36,18 @@ public class QR_code extends AppCompatActivity {
         intent = getIntent();
 
         menus = intent.getStringExtra("menus");
+
+        // 버거 보여주기
+        ArrayList<McDonaldBurger> burgers = intent.getParcelableArrayListExtra("burgers");
+        if (burgers != null) {
+            //  layout에 보여주기. 임시로 tv textview에 보여줌
+            StringBuilder stringBuilder = new StringBuilder();
+            for (McDonaldBurger burger : burgers) {
+                stringBuilder.append(burger.name).append(" ").append(burger.count).append("개").append("\n");
+            }
+            tv.setText(stringBuilder);
+        }
+
         if((ArrayList<String>)intent.getSerializableExtra("name_list") != null)
         {
             name_list = (ArrayList<String>)intent.getSerializableExtra("name_list");

@@ -1,16 +1,19 @@
 package com.sample.kakao;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,11 +38,13 @@ public class menu_list extends AppCompatActivity {
 
     ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-    String[] menu_name = {"빅맥 버거", "빅맥 버거 세트", "상하이 버거", "상하이 버거 세트", "1955 버거", "1955 버거 세트"};
-    String[] menu_price = {"4,600", "5,900", "4,600", "5,900", "5,700", "7,200"};
-    Integer[] pic = {R.drawable.bicmac, R.drawable.bicmac_set, R.drawable.shanghai, R.drawable.shanghai_set,
-            R.drawable.burger1955, R.drawable.burger1955_set};
-    String selected_menu = new String("");
+    //String[] menu_name ;
+
+   // String[] menu_price ;
+
+   // Integer[] pic ;
+
+    ArrayList<McDonaldBurger> selected_menu = new ArrayList<>();
     TextView tv_name;
     ImageButton menu_qr_btn;
     Button back_btn;
@@ -48,6 +53,7 @@ public class menu_list extends AppCompatActivity {
     private static ArrayList<Double> lati_list;
     private static ArrayList<Double> longi_list;
 
+    //public static List<McDonaldBurger> burgers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +93,7 @@ public class menu_list extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(), QR_code.class);
-                intent.putExtra("menus", selected_menu);
+                intent.putParcelableArrayListExtra("burgers", selected_menu);
                 intent.putExtra("name_list",name_list);
                 intent.putExtra("addr_list",addr_list);
                 intent.putExtra("lati_list",lati_list);
@@ -101,14 +107,18 @@ public class menu_list extends AppCompatActivity {
         CustomList adapt = new CustomList(menu_list.this, new ArrayList<>());
         list.setAdapter(adapt);
         list.setOnItemClickListener((parent, view, position, id) -> {
-
-            TextView temp_tv1 = view.findViewById(R.id.name1);
-            selected_menu +=temp_tv1.getText().toString() + ", ";
-            view.setBackgroundColor(Color.GRAY);
-            TextView temp_tv = view.findViewById(R.id.name3);
-            Integer temp_i = Integer.parseInt(temp_tv.getText().toString());
-            temp_i++;
-            temp_tv.setText(temp_i.toString());
+            McDonaldBurger item = (McDonaldBurger) list.getItemAtPosition(position);
+            if (!selected_menu.contains(item)) {
+                item.count++;
+                selected_menu.add(item);
+            } else {
+                for (int i = 0; i < selected_menu.size(); i++) {
+                    if (selected_menu.get(i).equals(item)) {
+                        selected_menu.get(i).count++;
+                    }
+                }
+            }
+            adapt.notifyDataSetChanged();
         });
 
         executorService.submit(() -> {
@@ -139,7 +149,7 @@ public class menu_list extends AppCompatActivity {
 
         @Override
         public long getItemId(int position) {
-            return 0;
+            return position;
         }
 
         public void update(List<McDonaldBurger> burgers) {
@@ -148,9 +158,11 @@ public class menu_list extends AppCompatActivity {
         }
 
         private class ViewHolder {
+            LinearLayout layout;
             ImageView imageView;
             TextView name;
             TextView price;
+            TextView count;
         }
 
         @NonNull
@@ -161,9 +173,11 @@ public class menu_list extends AppCompatActivity {
             }
 
             ViewHolder viewHolder = new ViewHolder();
+            viewHolder.layout = (LinearLayout) convertView.findViewById(R.id.list_item);
             viewHolder.imageView = (ImageView) convertView.findViewById(R.id.list_img);
             viewHolder.name = (TextView) convertView.findViewById(R.id.name1);
             viewHolder.price = (TextView) convertView.findViewById(R.id.name2);
+            viewHolder.count = (TextView) convertView.findViewById(R.id.name3);
             convertView.setTag(viewHolder);
 
             McDonaldBurger burger = getItem(position);
@@ -171,7 +185,14 @@ public class menu_list extends AppCompatActivity {
                 Glide.with(context).load(burger.imageUrl).into(viewHolder.imageView);
                 viewHolder.name.setText(burger.name);
                 viewHolder.price.setText(burger.price);
+                viewHolder.count.setText(String.valueOf(burger.count));
+                if (burger.count > 0) {
+                    viewHolder.layout.setBackgroundColor(Color.GRAY);
+                } else {
+                    viewHolder.layout.setBackgroundColor(0);
+                }
             }
+
             return convertView;
         }
     }

@@ -74,7 +74,7 @@ public class Nmaps_test extends AppCompatActivity {
         R_nameList = (ArrayList<String>)intent.getSerializableExtra("name_list");
         if(R_nameList !=null && getIntent() !=null)
         {
-            //tv.setText(name[0]);
+           // tv.setText(name[0]);
             R_latitudeList.clear();
             R_longitudeList.clear();
 
@@ -95,13 +95,13 @@ public class Nmaps_test extends AppCompatActivity {
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this::OnMapReady);
 
-        search_btn.setOnClickListener(new View.OnClickListener() {
+       search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Thread thread = new Thread(){
                     public void run(){
-                        geocoder = new Geocoder(mapView.getContext());
+                        /*geocoder = new Geocoder(mapView.getContext());
                         my_latitude = locationSource.getLastLocation().getLatitude();
                         my_longitude = locationSource.getLastLocation().getLongitude();
                         //tv2.setText(my_latitude.toString()+"\n"+my_longitude.toString());
@@ -116,7 +116,7 @@ public class Nmaps_test extends AppCompatActivity {
                         }catch(Exception e)
                         {
                             e.printStackTrace();
-                        }
+                        }*/
                         if(editText.getText().toString().equals("맥도날드") || editText.getText().toString().equals("롯데리아")||editText.getText().toString().equals("맘스터치"))
                         {
                             MA.set_input(my_location_str+" "+editText.getText().toString());
@@ -251,7 +251,7 @@ public class Nmaps_test extends AppCompatActivity {
 
         naverMap.setLocationSource(locationSource);
         //위치 추적모드 내위치로 이동 카메라도 자기쪽으로
-        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+        //naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
         naverMap.setLayerGroupEnabled(naverMap.LAYER_GROUP_BUILDING,true);
 
 
@@ -267,7 +267,7 @@ public class Nmaps_test extends AppCompatActivity {
         uiSettings.setScaleBarEnabled(true);    //거리
         uiSettings.setZoomControlEnabled(true); //zoom
         uiSettings.setLocationButtonEnabled(true);//현재위치 버튼
-
+//여기서 메뉴를 선택하고 스크롤을 내리면 여러개가 선택이 돼요 ㅠ
         if(R_latitudeList.size()>0)
         {
             //tv.setText(R_nameList.toString() + "\n" + R_locationList.toString());
