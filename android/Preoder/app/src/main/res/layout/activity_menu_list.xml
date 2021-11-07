@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.sample.kakao.menu_list"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
+
+ >
     <TextView
         android:id="@+id/menu_location_name"
         android:layout_width="match_parent"

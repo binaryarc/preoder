@@ -84,13 +84,23 @@ public class Nmaps_test extends AppCompatActivity {
 
 
         intent = getIntent();
+<<<<<<< HEAD
         if(res_name!=null)
         {
             res_name=res_name;
         }
+=======
+<<<<<<< HEAD
+        R_nameList = (ArrayList<String>)intent.getSerializableExtra("name_list");
+        if(R_nameList !=null && getIntent() !=null)
+        {
+           // tv.setText(name[0]);
+=======
+>>>>>>> 5dce9a3ee155f4e4f12a9e5fb3eb3aee54296241
         R_nameList = (ArrayList<String>) intent.getSerializableExtra("name_list");
         if (R_nameList != null && getIntent() != null) {
             //tv.setText(name[0]);
+>>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
             R_latitudeList.clear();
             R_longitudeList.clear();
 
@@ -108,6 +118,7 @@ public class Nmaps_test extends AppCompatActivity {
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this::OnMapReady);
 
+<<<<<<< HEAD
         // 안드로이드 6.0 버전 이상인지 체크해서 퍼미션 체크
         if(Build.VERSION.SDK_INT >= 23){
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.INTERNET,
@@ -120,12 +131,16 @@ public class Nmaps_test extends AppCompatActivity {
 
 
         voice_btn.setOnClickListener(new View.OnClickListener() {
+=======
+       search_btn.setOnClickListener(new View.OnClickListener() {
+>>>>>>> 5dce9a3ee155f4e4f12a9e5fb3eb3aee54296241
             @Override
             public void onClick(View v) {
                 mRecognizer = SpeechRecognizer.createSpeechRecognizer(Nmaps_test.this); // 새 SpeechRecognizer 를 만드는 팩토리 메서드
                 mRecognizer.setRecognitionListener(listener); // 리스너 설정
                 mRecognizer.startListening(intent); // 듣기 시작
 
+<<<<<<< HEAD
             }
         }); //음성 입력 버튼
 
@@ -143,9 +158,17 @@ public class Nmaps_test extends AppCompatActivity {
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+=======
+<<<<<<< HEAD
+                Thread thread = new Thread(){
+                    public void run(){
+                        /*geocoder = new Geocoder(mapView.getContext());
+=======
+>>>>>>> 5dce9a3ee155f4e4f12a9e5fb3eb3aee54296241
                 Thread thread = new Thread() {
                     public void run() {
                         geocoder = new Geocoder(mapView.getContext());
+>>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
                         my_latitude = locationSource.getLastLocation().getLatitude();
                         my_longitude = locationSource.getLastLocation().getLongitude();
                         //tv2.setText(my_latitude.toString()+"\n"+my_longitude.toString());
@@ -159,11 +182,20 @@ public class Nmaps_test extends AppCompatActivity {
                             //tv2.setText(my_location_str);
                         } catch (Exception e) {
                             e.printStackTrace();
+<<<<<<< HEAD
+                        }*/
+                        if(editText.getText().toString().equals("맥도날드") || editText.getText().toString().equals("롯데리아")||editText.getText().toString().equals("맘스터치"))
+                        {
+                            MA.set_input(my_location_str+" "+editText.getText().toString());
+                        }else
+                        {
+=======
                         }
                         if (editText.getText().toString().charAt(0) == '맥' || editText.getText().toString().charAt(0) == '롯'
                                 || editText.getText().toString().charAt(0) == '맘' ||editText.getText().toString().charAt(0) == '버') {
                             MA.set_input(my_location_str + " " + editText.getText().toString());
                         } else {
+>>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
                             MA.set_input(editText.getText().toString());
                         }
                         //MA.set_input(editText.getText().toString());
@@ -277,8 +309,13 @@ public class Nmaps_test extends AppCompatActivity {
 
         naverMap.setLocationSource(locationSource);
         //위치 추적모드 내위치로 이동 카메라도 자기쪽으로
+<<<<<<< HEAD
+        //naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+        naverMap.setLayerGroupEnabled(naverMap.LAYER_GROUP_BUILDING,true);
+=======
         naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
         naverMap.setLayerGroupEnabled(naverMap.LAYER_GROUP_BUILDING, true);
+>>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
 
         //NaverMap 객체 받아서 NaverMap객체에 위치 소스 지정
         UiSettings uiSettings = naverMap.getUiSettings();
@@ -286,8 +323,14 @@ public class Nmaps_test extends AppCompatActivity {
         uiSettings.setScaleBarEnabled(true);    //거리
         uiSettings.setZoomControlEnabled(true); //zoom
         uiSettings.setLocationButtonEnabled(true);//현재위치 버튼
+<<<<<<< HEAD
+//여기서 메뉴를 선택하고 스크롤을 내리면 여러개가 선택이 돼요 ㅠ
+        if(R_latitudeList.size()>0)
+        {
+=======
 
         if (R_latitudeList.size() > 0) {
+>>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
             //tv.setText(R_nameList.toString() + "\n" + R_locationList.toString());
             //tv2.setText(R_latitudeList.toString() + "\n" + R_longitudeList.toString());
             ArrayList<Marker> mk_arr = new ArrayList<>();
