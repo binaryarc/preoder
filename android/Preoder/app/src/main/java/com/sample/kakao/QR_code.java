@@ -21,22 +21,35 @@ public class QR_code extends AppCompatActivity {
     String menus;
     Intent intent;
     ImageView iv;
-    TextView tv,tv2;    //tv1은 qr코드 정보, tv2는 식당이름
+    TextView tv,tv2;
     Button btn;
     private static ArrayList<String> name_list;
     private static ArrayList<String> addr_list;
     private static ArrayList<Double> lati_list;
     private static ArrayList<Double> longi_list;
     String location_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_code);
         tv=(TextView)findViewById(R.id.qr_info);
-        tv2=(TextView)findViewById(R.id.restaurant_name);
         intent = getIntent();
+        tv2=(TextView)findViewById(R.id.restaurant_name);
+        //menus = intent.getStringExtra("menus");
 
-        menus = intent.getStringExtra("menus");
+        // 버거 보여주기
+        ArrayList<McDonaldBurger> burgers = intent.getParcelableArrayListExtra("burgers");
+        if (burgers != null) {
+            // 보여주고 싶은 layout에 보여주기.
+            StringBuilder stringBuilder = new StringBuilder();
+            for (McDonaldBurger burger : burgers) {
+                stringBuilder.append(burger.name).append(" ").append(burger.count).append("개").append("\n");
+            }
+            tv.setText(stringBuilder);
+        }
+
+
         if((ArrayList<String>)intent.getSerializableExtra("name_list") != null)
         {
             location_name = intent.getStringExtra("location_name");
@@ -47,22 +60,25 @@ public class QR_code extends AppCompatActivity {
             tv2.setText(location_name);
         }
 
+
         iv = (ImageView)findViewById(R.id.qrcode);
         btn = (Button)findViewById(R.id.back_btn);
+        //zixng 라이브러리 사용
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try{
-            BitMatrix bitMatrix = multiFormatWriter.encode(menus, BarcodeFormat.QR_CODE,400,400);
+            BitMatrix bitMatrix = multiFormatWriter.encode(String.valueOf(burgers), BarcodeFormat.QR_CODE,400,400);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
             iv.setImageBitmap(bitmap);
-            tv.setText(menus);
+
         }catch (Exception e){}
+
         intent = new Intent(getApplicationContext(),menu_list.class);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(), menu_list.class);
+                intent = new Intent(getApplicationContext(), restaurant_list.class);
                 intent.putExtra("name_list",name_list);
                 intent.putExtra("addr_list",addr_list);
                 intent.putExtra("lati_list",lati_list);

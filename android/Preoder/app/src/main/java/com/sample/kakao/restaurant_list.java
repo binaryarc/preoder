@@ -22,12 +22,13 @@ public class restaurant_list extends AppCompatActivity {
     public static int mcdo = 0;
     public static int lotteria = 1;
     public static int momst = 2;
+    public static int bk = 3;
     String[] name;
     String[] addr;
     Double[] latitude;
     Double[] longitude;
     String[] brand ={"맥도날드","맥도날드","롯데리아","롯데리아"};
-    Integer[] pic = {R.drawable.mcdo, R.drawable.lotteria,R.drawable.momstouch};
+    Integer[] pic = {R.drawable.mcdo, R.drawable.lotteria,R.drawable.momstouch,R.drawable.burgerking};
     Intent intent;
     ImageButton back_btn,map_view_btn;
     private static ArrayList<String> name_list;
@@ -35,15 +36,12 @@ public class restaurant_list extends AppCompatActivity {
     private static ArrayList<Double> lati_list;
     private static ArrayList<Double> longi_list;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_list);
         back_btn = (ImageButton)findViewById(R.id.back_btn);
         map_view_btn=(ImageButton)findViewById(R.id.map_view_btn);
-
-
 
         intent = getIntent();
         if((ArrayList<String>)intent.getSerializableExtra("name_list") !=null)
@@ -67,7 +65,6 @@ public class restaurant_list extends AppCompatActivity {
             longitude = new Double[longi_list.size()];
             longi_list.toArray(longitude);
         }
-
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,10 +96,8 @@ public class restaurant_list extends AppCompatActivity {
             intent = new Intent(getApplicationContext(), menu_list.class);
             intent.putExtra("location_name", name[position]);
             intent.putExtra("brand_name",brand[position]);
-
             intent.putExtra("name_list",name_list);
             intent.putExtra("addr_list",addr_list);
-
             intent.putExtra("lati_list",lati_list);
             intent.putExtra("longi_list",longi_list);
             startActivity(intent);
@@ -126,11 +121,8 @@ public class restaurant_list extends AppCompatActivity {
             TextView location_name=(TextView)rowView.findViewById(R.id.name1);
             TextView sell_menu=(TextView)rowView.findViewById(R.id.name2);
             TextView tv3=(TextView)rowView.findViewById(R.id.name3);
-
             location_name.setText(name[position]);
-
             String[ ]temp = name[position].split(" ");
-
             if(name[position].charAt(0) == '맥')
             {
                 restaurant_img.setImageResource(pic[mcdo]);
@@ -140,6 +132,9 @@ public class restaurant_list extends AppCompatActivity {
             }else if(name[position].charAt(0) == '맘')
             {
                 restaurant_img.setImageResource(pic[momst]);
+            }else if(name[position].charAt(0) == '버')
+            {
+                restaurant_img.setImageResource(pic[bk]);
             }
 
             sell_menu.setText("햄버거");

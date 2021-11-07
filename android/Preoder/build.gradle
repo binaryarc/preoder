@@ -16,13 +16,14 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
         // Android SDK 레파지토리(Repository)를 설정
         maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
         maven{url "https://maven.google.com"}
         maven {
             url 'https://naver.jfrog.io/artifactory/maven/'
         }
-        mavenCentral()
+
     }
 }
 

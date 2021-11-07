@@ -21,17 +21,15 @@ public class MyAsyncTask2 extends AsyncTask<Void, Void, Void> {
         this.input_txt = input_text;
 
     }
-
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
     }
-
     @Override
     protected Void doInBackground(Void... voids) {
         //https://console.ncloud.com/mc/solution/naverService/application 이사이트값
-        String clientId = "2nfrpmkgzn";//애플리케이션 클라이언트 아이디값";
-        String clientSecret = "DK1l0ngF8qeIbLqs73s1xfJqhSybfUUs5YnKIgME";//애플리케이션 클라이언트 시크릿값";
+        String clientId = "jj0t2wiiw7";//애플리케이션 클라이언트 아이디값";
+        String clientSecret = "zbkMgR041FY3i77WZSSGFDxlHFyVRwKf0klAMmhB";//애플리케이션 클라이언트 시크릿값";
         try {
             String text = URLEncoder.encode(this.input_txt, "UTF-8");
             String apiURL = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" +text;

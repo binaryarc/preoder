@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Menu_recommend"></activity>
         <activity android:name=".Search_list_test" />
         <activity android:name=".Nmaps_test" />
         <activity android:name=".SecondActivity" />
@@ -28,13 +29,12 @@
         <activity android:name=".menu_list" />
         <activity android:name=".restaurant_list" />
 
-
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="2nfrpmkgzn" />
+            android:value="jj0t2wiiw7" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

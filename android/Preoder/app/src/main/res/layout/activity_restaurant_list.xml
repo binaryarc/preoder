@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".restaurant_list"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff"
+    >
 
     <ImageView
         android:layout_width="315dp"
@@ -29,7 +31,6 @@
                 android:id="@+id/back_btn"
                 android:layout_width="120px"
                 android:layout_height="120px"
-                android:background="#ffffff"
                 android:src="@drawable/left_direction"
                 />
             <TextView
@@ -51,6 +52,7 @@
                 android:layout_height="120px"
                 android:src="@drawable/map_"
                 android:background="#ffffff"
+
                 />
             <TextView
                 android:layout_width="wrap_content"

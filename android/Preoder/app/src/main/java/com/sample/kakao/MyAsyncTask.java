@@ -30,9 +30,7 @@ public class MyAsyncTask extends AsyncTask<Void, Void, Void> {
         String clientSecret = "cxng5Nn0Jc";//애플리케이션 클라이언트 시크릿값";
         try {
             String text = URLEncoder.encode(this.input_txt, "UTF-8");
-
             String apiURL = "https://openapi.naver.com/v1/search/local.json?query="+ text +"&display=10"; // json 결과
-            //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
@@ -51,7 +49,6 @@ public class MyAsyncTask extends AsyncTask<Void, Void, Void> {
             while ((inputLine = br.readLine()) != null) {
                 response.append(inputLine);
             }
-
             br.close();
             //System.out.println(response.toString());
             this.json_text = response.toString();
@@ -62,6 +59,5 @@ public class MyAsyncTask extends AsyncTask<Void, Void, Void> {
     }
     @Override
     protected void onPostExecute(Void aVoid) {
-
     }
 }
