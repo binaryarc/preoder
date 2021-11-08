@@ -27,10 +27,10 @@ public class restaurant_list extends AppCompatActivity {
     String[] addr;
     Double[] latitude;
     Double[] longitude;
-    String[] brand ={"맥도날드","맥도날드","롯데리아","롯데리아"};
+    String[] brand ={"맥도날드","맥도날드","맘스터치","버거킹"};
     Integer[] pic = {R.drawable.mcdo, R.drawable.lotteria,R.drawable.momstouch,R.drawable.burgerking};
     Intent intent;
-    ImageButton back_btn,map_view_btn;
+    ImageButton back_btn,map_view_btn,home_btn;
     private static ArrayList<String> name_list;
     private static ArrayList<String> addr_list;
     private static ArrayList<Double> lati_list;
@@ -42,6 +42,7 @@ public class restaurant_list extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant_list);
         back_btn = (ImageButton)findViewById(R.id.back_btn);
         map_view_btn=(ImageButton)findViewById(R.id.map_view_btn);
+        home_btn=(ImageButton)findViewById(R.id.home_btn);
 
         intent = getIntent();
         if((ArrayList<String>)intent.getSerializableExtra("name_list") !=null)
@@ -73,7 +74,14 @@ public class restaurant_list extends AppCompatActivity {
                 restaurant_list.this.finish();
             }
         });
-
+        home_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                restaurant_list.this.finish();
+            }
+        });
         map_view_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

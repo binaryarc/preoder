@@ -37,29 +37,33 @@ import java.util.ArrayList;
 
 public class Nmaps_test extends AppCompatActivity {
 
-    private MapView mapView;
+    private static MapView mapView;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
-    private FusedLocationSource locationSource;
+    private static FusedLocationSource locationSource;
     private static NaverMap naverMap;
-    private Geocoder geocoder;
+    private static Geocoder geocoder;
     private static String json_str;
-    private MyAsyncTask MA = new MyAsyncTask();
-    private MyAsyncTask2 MA2 = new MyAsyncTask2();
+    public static MyAsyncTask MA = new MyAsyncTask();
+    public static MyAsyncTask2 MA2 = new MyAsyncTask2();
     private static ArrayList<String> R_nameList;
     private static ArrayList<String> R_locationList;
     private static ArrayList<Double> R_latitudeList;
     private static ArrayList<Double> R_longitudeList;
-    Intent intent,voice_intent;
-    String my_location_str,res_name;
+    static Intent intent,voice_intent;
+    static String my_location_str,res_name;
     Button search_btn;
     ImageButton voice_btn,back_btn;
     TextView tv, tv2, tv3;
     EditText editText;
-    Double my_latitude, my_longitude;
+    static Double my_latitude, my_longitude;
     private static double[] lati_arr, longi_arr;
     private static String[] name, addr;
     final int PERMISSION = 1;
     SpeechRecognizer mRecognizer;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,31 +80,20 @@ public class Nmaps_test extends AppCompatActivity {
         //지도 사용권한 받기
         locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
         mapView = (MapView) findViewById(R.id.map_view);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this::OnMapReady);
+
+
+
 
         voice_btn = findViewById(R.id.voice_btn);
-
-
-
-
-
         intent = getIntent();
-<<<<<<< HEAD
-        if(res_name!=null)
-        {
-            res_name=res_name;
-        }
-=======
-<<<<<<< HEAD
+
+
         R_nameList = (ArrayList<String>)intent.getSerializableExtra("name_list");
         if(R_nameList !=null && getIntent() !=null)
-        {
+            {
            // tv.setText(name[0]);
-=======
->>>>>>> 5dce9a3ee155f4e4f12a9e5fb3eb3aee54296241
-        R_nameList = (ArrayList<String>) intent.getSerializableExtra("name_list");
-        if (R_nameList != null && getIntent() != null) {
-            //tv.setText(name[0]);
->>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
             R_latitudeList.clear();
             R_longitudeList.clear();
 
@@ -115,10 +108,8 @@ public class Nmaps_test extends AppCompatActivity {
             R_longitudeList = new ArrayList<>();
 
         }
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(this::OnMapReady);
 
-<<<<<<< HEAD
+
         // 안드로이드 6.0 버전 이상인지 체크해서 퍼미션 체크
         if(Build.VERSION.SDK_INT >= 23){
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.INTERNET,
@@ -131,16 +122,12 @@ public class Nmaps_test extends AppCompatActivity {
 
 
         voice_btn.setOnClickListener(new View.OnClickListener() {
-=======
-       search_btn.setOnClickListener(new View.OnClickListener() {
->>>>>>> 5dce9a3ee155f4e4f12a9e5fb3eb3aee54296241
             @Override
             public void onClick(View v) {
                 mRecognizer = SpeechRecognizer.createSpeechRecognizer(Nmaps_test.this); // 새 SpeechRecognizer 를 만드는 팩토리 메서드
                 mRecognizer.setRecognitionListener(listener); // 리스너 설정
                 mRecognizer.startListening(intent); // 듣기 시작
 
-<<<<<<< HEAD
             }
         }); //음성 입력 버튼
 
@@ -153,91 +140,78 @@ public class Nmaps_test extends AppCompatActivity {
             }
         });
 
+        if(intent.getBooleanExtra("recommend_menu_click",false))
+        {
+            editText.setText(intent.getStringExtra("recommend_brand"));
+            search_and_view();
+        }//메뉴 추천에서 넘어올 경우
+
 
 
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-=======
-<<<<<<< HEAD
-                Thread thread = new Thread(){
-                    public void run(){
-                        /*geocoder = new Geocoder(mapView.getContext());
-=======
->>>>>>> 5dce9a3ee155f4e4f12a9e5fb3eb3aee54296241
-                Thread thread = new Thread() {
-                    public void run() {
-                        geocoder = new Geocoder(mapView.getContext());
->>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
-                        my_latitude = locationSource.getLastLocation().getLatitude();
-                        my_longitude = locationSource.getLastLocation().getLongitude();
-                        //tv2.setText(my_latitude.toString()+"\n"+my_longitude.toString());
-                        //자신의 위치 저장
-                        try {
-                            my_location_str = geocoder.getFromLocation(my_latitude, my_longitude, 1).toString();
-                            //tv.setText(my_location_str);
-                            String[] str_arr = my_location_str.split("=");
-                            String[] str_arr_ = str_arr[6].split(",");
-                            my_location_str = str_arr_[0];  //xx동
-                            //tv2.setText(my_location_str);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-<<<<<<< HEAD
-                        }*/
-                        if(editText.getText().toString().equals("맥도날드") || editText.getText().toString().equals("롯데리아")||editText.getText().toString().equals("맘스터치"))
-                        {
-                            MA.set_input(my_location_str+" "+editText.getText().toString());
-                        }else
-                        {
-=======
-                        }
-                        if (editText.getText().toString().charAt(0) == '맥' || editText.getText().toString().charAt(0) == '롯'
-                                || editText.getText().toString().charAt(0) == '맘' ||editText.getText().toString().charAt(0) == '버') {
-                            MA.set_input(my_location_str + " " + editText.getText().toString());
-                        } else {
->>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
-                            MA.set_input(editText.getText().toString());
-                        }
-                        //MA.set_input(editText.getText().toString());
-                        MA.doInBackground();
-                        json_str = MA.get_json();
-                        //tv.setText(json_str);
-                        JSONParse(json_str);    //String list 배열에 저장
-                        //tv.setText(R_nameList.toString() + "\n" + R_locationList.toString());
-                        //R_namList, R_locationList 만들어짐
-                        if (!R_locationList.isEmpty()) {
-                            R_latitudeList.clear();
-                            R_longitudeList.clear();
-                            for (int i = 0; i < R_locationList.size(); i++) {
-                                MA2.set_input(R_locationList.get(i));
-                                //MA2.set_input(R_locationList.get(i));
-                                MA2.doInBackground();
-                                json_str = MA2.get_json();
-                                JSONParse2(json_str);    //String list 배열에 저장
-                            }
-
-                            //tv2.setText(R_latitudeList.toString() + "\n" + R_longitudeList.toString());
-                        } else {
-                            System.out.println("isEmpty");
-                        }
-                        Intent intent = new Intent(getApplicationContext(), restaurant_list.class);
-                        intent.putExtra("name_list", R_nameList);
-                        intent.putExtra("addr_list", R_locationList);
-                        intent.putExtra("lati_list", R_latitudeList);
-                        intent.putExtra("longi_list", R_longitudeList);
-                        startActivity(intent);
-                        finish();
-                    }//run()
-                };
-                thread.start();
+                search_and_view();
             }//on click
         }); // 검색 버튼
+    }
 
+
+
+
+
+    public void search_and_view()
+    {
+        final EditText editText = findViewById(R.id.editText);
+        Thread thread = new Thread(){
+
+            public void run(){
+//                if(locationSource.isActivated())get_location();
+                get_location();
+                if (editText.getText().toString().charAt(0) == '맥' || editText.getText().toString().charAt(0) == '롯'
+                        || editText.getText().toString().charAt(0) == '맘' ||editText.getText().toString().charAt(0) == '버') {
+
+                    MA.set_input(my_location_str + " " + editText.getText().toString());
+                }else
+                {
+                    MA.set_input(editText.getText().toString());
+                }
+                //MA.set_input(editText.getText().toString());
+                MA.doInBackground();
+                json_str = MA.get_json();
+                //tv.setText(json_str);
+                JSONParse(json_str);    //String list 배열에 저장
+                //tv.setText(R_nameList.toString() + "\n" + R_locationList.toString());
+                //R_namList, R_locationList 만들어짐
+                if (!R_locationList.isEmpty()) {
+                    R_latitudeList.clear();
+                    R_longitudeList.clear();
+                    for (int i = 0; i < R_locationList.size(); i++) {
+                        MA2.set_input(R_locationList.get(i));
+                        //MA2.set_input(R_locationList.get(i));
+                        MA2.doInBackground();
+                        json_str = MA2.get_json();
+                        JSONParse2(json_str);    //String list 배열에 저장
+                    }
+
+                    //tv2.setText(R_latitudeList.toString() + "\n" + R_longitudeList.toString());
+                } else {
+                    System.out.println("isEmpty");
+                }
+                Intent intent = new Intent(getApplicationContext(), restaurant_list.class);
+                intent.putExtra("name_list", R_nameList);
+                intent.putExtra("addr_list", R_locationList);
+                intent.putExtra("lati_list", R_latitudeList);
+                intent.putExtra("longi_list", R_longitudeList);
+                startActivity(intent);
+                finish();
+            }//run()
+        };
+        thread.start();
     }
 
     public static void JSONParse2(String json_str_)    //주소 결과
     {
-
         try {
             JSONObject jsonObject = new JSONObject(json_str_);
             JSONArray jsonArray = jsonObject.getJSONArray("addresses");
@@ -309,13 +283,9 @@ public class Nmaps_test extends AppCompatActivity {
 
         naverMap.setLocationSource(locationSource);
         //위치 추적모드 내위치로 이동 카메라도 자기쪽으로
-<<<<<<< HEAD
-        //naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-        naverMap.setLayerGroupEnabled(naverMap.LAYER_GROUP_BUILDING,true);
-=======
+
         naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
         naverMap.setLayerGroupEnabled(naverMap.LAYER_GROUP_BUILDING, true);
->>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
 
         //NaverMap 객체 받아서 NaverMap객체에 위치 소스 지정
         UiSettings uiSettings = naverMap.getUiSettings();
@@ -323,14 +293,8 @@ public class Nmaps_test extends AppCompatActivity {
         uiSettings.setScaleBarEnabled(true);    //거리
         uiSettings.setZoomControlEnabled(true); //zoom
         uiSettings.setLocationButtonEnabled(true);//현재위치 버튼
-<<<<<<< HEAD
-//여기서 메뉴를 선택하고 스크롤을 내리면 여러개가 선택이 돼요 ㅠ
-        if(R_latitudeList.size()>0)
-        {
-=======
 
         if (R_latitudeList.size() > 0) {
->>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
             //tv.setText(R_nameList.toString() + "\n" + R_locationList.toString());
             //tv2.setText(R_latitudeList.toString() + "\n" + R_longitudeList.toString());
             ArrayList<Marker> mk_arr = new ArrayList<>();
@@ -360,6 +324,29 @@ public class Nmaps_test extends AppCompatActivity {
         }
 
     }//onMapReady
+
+    public void get_location()
+    {
+        geocoder = new Geocoder(mapView.getContext());
+        if(locationSource.getLastLocation()!=null)
+        {
+            my_latitude = locationSource.getLastLocation().getLatitude();
+            my_longitude = locationSource.getLastLocation().getLongitude();
+        }else
+        {
+            get_location();
+        }
+
+        try{
+            my_location_str = geocoder.getFromLocation(my_latitude,my_longitude,1).toString();
+            String[] str_arr = my_location_str.split("=");
+            String[] str_arr_ = str_arr[6].split(",");
+            my_location_str = str_arr_[0];  //xx동
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     private RecognitionListener listener = new RecognitionListener() {
         @Override

@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,35 +45,19 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-//    Button.OnClickListener mGoogleLoginListener = new ImageView.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            Intent intent = new Intent(MainActivity.this, GoogleLogin.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        final ImageButton menu_rec_btn = findViewById(R.id.menu_recommend_btn);
+        final ImageButton res_search_btn = findViewById(R.id.restaurant_search_btn);
 
 
-        //pass_btn1 = findViewById(R.id.btn_login_pass1);
-
-        menu_rec_btn = findViewById(R.id.menu_rec_btn);     //메뉴 추천버튼
-        pass_btn2 = findViewById(R.id.btn_login_pass2);     //메뉴 검색버튼 -> 지도화면으로 넘어감
-//        mKakaoLoginBtn = findViewById(R.id.btn_kakao_login);
-//        mNaverLoginBtn = findViewById(R.id.btn_naver_login);
-//        mGoogleLoginBtn = findViewById(R.id.btn_google_login);
-//        mKakaoLoginBtnBasic = findViewById(R.id.btn_kakao_login_basic);
-//        mNaverLoginBtnBasic = findViewById(R.id.btn_naver_login_basic);
-//        mNaverLoginBtnBasic.setOAuthLoginHandler(mNaverLoginHandler);
-
-
-        pass_btn2.setOnClickListener(new View.OnClickListener() {
+        res_search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Nmaps_test.class);
@@ -90,133 +76,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }); //메뉴 추천받기
 
-//        mKakaoLoginBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mKakaoLoginBtnBasic.performClick();
-//            }
-//        });
-//
-//
-//
-//        mNaverLoginBtn.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                mNaverLoginBtnBasic.performClick();
-//            }
-//        });
-//
-//
-//        mGoogleLoginBtn.setOnClickListener(mGoogleLoginListener);
-//
-//
-//        mNaverLoginModule = OAuthLogin.getInstance();
-//        mNaverLoginModule.init(
-//                this
-//                , NAVER_CLIENT_ID
-//                , NAVER_CLIENT_SECRET
-//                , "네이버 아이디로 로그인"
-//
-//        );
-
-
-//        mGoogleLoginModule = FirebaseAuth.getInstance();
-//
-//        if (!HasKakaoSession() && !HasNaverSession() && !HasGoogleSession()) {
-//
-//            sessionCallback = new KakaoLogin.KakaoSessionCallback(getApplicationContext(), MainActivity.this);
-//
-//            Session.getCurrentSession().addCallback(sessionCallback);
-//
-//        } else if (HasKakaoSession()) {
-//
-//            sessionCallback = new KakaoLogin.KakaoSessionCallback(getApplicationContext(), MainActivity.this);
-//
-//            Session.getCurrentSession().addCallback(sessionCallback);
-//
-//            Session.getCurrentSession().checkAndImplicitOpen();
-//
-//        } else if (HasNaverSession()) {
-//
-//            Intent intent = new Intent(MainActivity.this, NaverLogin.class);
-//
-//            startActivity(intent);
-//
-//            finish();
-//
-//        } else if (HasGoogleSession()) {
-//
-//            Intent intent = new Intent(MainActivity.this, GoogleLogin.class);
-//
-//            startActivity(intent);
-//
-//            finish();
-//        }
-//
-//    }//onCreate
-
-
-
-//    @Override
-//
-//    protected void onDestroy() {
-//
-//        super.onDestroy();
-//
-//        // 세션 콜백 삭제
-//
-//        Session.getCurrentSession().removeCallback(sessionCallback);
-//
-//    }
-
-
-
-//    private boolean HasKakaoSession() {
-//
-//        if (!Session.getCurrentSession().checkAndImplicitOpen()) {
-//
-//            return false;
-//        }
-//
-//        return true;
-//
-//    }
-
-
-
-//    private boolean HasNaverSession() {
-//
-//        if (OAuthLoginState.NEED_LOGIN.equals(mNaverLoginModule.getState(getApplicationContext())) ||
-//
-//                OAuthLoginState.NEED_INIT.equals(mNaverLoginModule.getState(getApplicationContext()))) {
-//
-//            return false;
-//        }
-//
-//        return true;
-//
-//    }
-
-//    private boolean HasGoogleSession() {
-//        if (mGoogleLoginModule.getCurrentUser() == null) {
-//            return false;
-//        }
-//        return true;
-//    }
-
-//    public void directToSecondActivity(Boolean result) {
-//
-//        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-//
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//
-//        if (result) {
-//            Toast.makeText(getApplicationContext(), "로그인 성공!", Toast.LENGTH_SHORT).show();
-//            startActivity(intent);;
-//            finish();
-//
-//        }
-//
     }//onCreate문
 }

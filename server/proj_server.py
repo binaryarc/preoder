@@ -36,7 +36,7 @@ okt=Okt()
 train_data_location = "E:\\sw_proj\\sw_proj\\server\\train_data.csv"
 f1 = open(train_data_location,'r',encoding='utf-8-sig')
 y=[]
-stop_words = '고 지 은 한 추천 해 줘 맛 추천해줘 해줘'    #불용어들  
+stop_words = '고 지 은 한 추천 해 줘 맛 추천해줘 해줘 메뉴'    #불용어들  
 taste_arr =["0","매운맛","신맛","단맛","고소한맛"]
 
 stop_words=set(stop_words.split(' '))
@@ -93,6 +93,7 @@ while True: #안드로이드에서 연결 버튼 누를 때까지 기다림
         in_word = [word for word in in_word_tokens if not word in stop_words]   #불용어 제거
         print(in_word)
         encoded = tokenizer.texts_to_sequences(in_word) #정수로 인코딩
+        
         encoded = pad_sequences([encoded],maxlen=max_len,padding='pre') #패딩
 
         yhat = model.predict(encoded,verbose=0)
@@ -113,3 +114,4 @@ while True: #안드로이드에서 연결 버튼 누를 때까지 기다림
 
 client_sock.close()
 server_sock.close()
+

@@ -1,109 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/hg_main_70"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.70" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/hg_main_95"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
-
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/layout_login_btn_group"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="0dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/hg_main_95"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hg_main_70">
-
-        <Button
+        android:background="@android:color/white"
+        >
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#808050"
-            android:text="메뉴 추천"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            android:id="@+id/menu_rec_btn"
-            ></Button>
-        <Button
+            android:layout_height="6dp"
+            android:background="#6DF2E3"
+            ></ImageView>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/d2coding"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#707070"
-            android:text="매장 검색"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            android:id="@+id/btn_login_pass2"
-            ></Button>
+            android:layout_height="50dp"
+            android:text="PREODER"
+            android:textSize="50dp"
+            android:gravity="center"
+            android:textColor="#6E6E6E"
+            ></TextView>
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="#6DF2E3"
+            ></ImageView>
 
-<!--        <Button-->
-<!--            android:id="@+id/btn_kakao_login"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="#FEE500"-->
-<!--            android:text="카카오톡 로그인"-->
-<!--            android:textColor="#000000"-->
-<!--            android:textSize="19sp"-->
-<!--            android:textStyle="bold"-->
-<!--            />-->
-<!--        <Button-->
-<!--            android:id="@+id/btn_naver_login"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginBottom="6dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="#1EC800"-->
-<!--            android:text="네이버 로그인"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:textStyle="bold"-->
-<!--            />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_google_login"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginBottom="6dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="#D0FFFFFF"-->
-<!--            android:text="구글 로그인"-->
-<!--            android:textColor="#2B2B2B"-->
-<!--            android:textSize="19sp"-->
-<!--            android:textStyle="bold"-->
-<!--            />-->
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone">
+        android:paddingRight="20dp"
+        >
+        <ImageButton
+            android:id="@+id/menu_recommend_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/solid_back"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:src="@drawable/recommend_img"></ImageButton>
 
-        <com.kakao.usermgmt.LoginButton
-            android:id="@+id/btn_kakao_login_basic"
-            android:layout_width="0dp"
-            android:layout_height="0dp"/>
-
-        <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-            android:id="@+id/btn_naver_login_basic"
-            android:layout_width="0dp"
-            android:layout_height="0dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메뉴 추천"
+            android:textSize="30dp"
+            android:textColor="#111"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            ></TextView>
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            >
+            <ImageButton
+                android:id="@+id/restaurant_search_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:background="@drawable/solid_back"
+                android:src="@drawable/restaurant_img"></ImageButton>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="매장 검색"
+                android:textSize="30dp"
+                android:layout_gravity="center"
+                android:textColor="#111"
+                android:textStyle="bold"
+                ></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

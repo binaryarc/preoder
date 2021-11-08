@@ -56,7 +56,7 @@ public class Menu_recommend extends AppCompatActivity {
     private static String SERVER_IP = "61.76.200.84";
     private static String CONNECT_MSG = null;
 
-    ArrayList<Recommend_data> recommends = new ArrayList<Recommend_data>(); //json 파싱한 데이터들 저장할 곳
+    static ArrayList<Recommend_data> recommends = new ArrayList<Recommend_data>(); //json 파싱한 데이터들 저장할 곳
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,7 +171,21 @@ public class Menu_recommend extends AppCompatActivity {
 
             Menu_recommend.CustomList adapt = new Menu_recommend.CustomList(Menu_recommend.this);
             list.setAdapter(adapt);
-        }
+            list.setOnItemClickListener((parent, view, position, id) -> {
+                intent = new Intent(getApplicationContext(), Nmaps_test.class);
+                intent.putExtra("recommend_menu_click", true);
+                intent.putExtra("recommend_brand",recommends.get(position).brand);
+
+                startActivity(intent);
+                Menu_recommend.this.finish();
+
+            });
+
+
+
+
+
+        }   //onPostExecute
 
         @Override
         protected Void doInBackground(String... strings) {
@@ -198,10 +212,6 @@ public class Menu_recommend extends AppCompatActivity {
                 int readByteConut = is.read(bytes);
 
                 message = new String(bytes,0,readByteConut,"UTF-8");
-
-
-
-
 
 
 

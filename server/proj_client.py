@@ -24,4 +24,3 @@ while True:
     if str(sendData)=="exit":
         clientSocket.close()
         break;
-    clientSocket.send(sendData.encode())

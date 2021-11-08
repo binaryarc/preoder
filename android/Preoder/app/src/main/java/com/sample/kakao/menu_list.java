@@ -1,14 +1,12 @@
 package com.sample.kakao;
 
 import android.app.Activity;
-import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -38,19 +36,12 @@ public class menu_list extends AppCompatActivity {
 
     ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-<<<<<<< HEAD
     String[] menu_name ;
 
     String[] menu_price ;
 
     Integer[] pic ;
-=======
-    //String[] menu_name ;
 
-   // String[] menu_price ;
-
-   // Integer[] pic ;
->>>>>>> 5dce9a3ee155f4e4f12a9e5fb3eb3aee54296241
 
     ArrayList<McDonaldBurger> selected_menu = new ArrayList<>();
     TextView tv_name;
@@ -101,21 +92,9 @@ public class menu_list extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(), QR_code.class);
-<<<<<<< HEAD
-
                 intent.putParcelableArrayListExtra("burgers", selected_menu);
-
                 intent.putExtra("location_name",location_name);
                 intent.putExtra("menus", selected_menu);
-
-=======
-<<<<<<< HEAD
-                intent.putParcelableArrayListExtra("burgers", selected_menu);
-=======
-                intent.putExtra("location_name",location_name);
-                intent.putExtra("menus", selected_menu);
->>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
->>>>>>> 5dce9a3ee155f4e4f12a9e5fb3eb3aee54296241
                 intent.putExtra("name_list",name_list);
                 intent.putExtra("addr_list",addr_list);
                 intent.putExtra("lati_list",lati_list);
@@ -129,7 +108,6 @@ public class menu_list extends AppCompatActivity {
         CustomList adapt = new CustomList(menu_list.this, new ArrayList<>());
         list.setAdapter(adapt);
         list.setOnItemClickListener((parent, view, position, id) -> {
-<<<<<<< HEAD
             McDonaldBurger item = (McDonaldBurger) list.getItemAtPosition(position);
             if (!selected_menu.contains(item)) {
                 item.count++;
@@ -142,22 +120,6 @@ public class menu_list extends AppCompatActivity {
                 }
             }
             adapt.notifyDataSetChanged();
-=======
-
-            McDonaldBurger item = (McDonaldBurger) list.getItemAtPosition(position);
-            if (!selected_menu.contains(item)) {
-                item.count++;
-                selected_menu.add(item);
-            } else {
-                for (int i = 0; i < selected_menu.size(); i++) {
-                    if (selected_menu.get(i).equals(item)) {
-                        selected_menu.get(i).count++;
-                    }
-                }
-            }
-            adapt.notifyDataSetChanged();
-
->>>>>>> 79653ba578d0a7c9e26ba6532901cb15106cbea7
         });
 
         executorService.submit(() -> {
