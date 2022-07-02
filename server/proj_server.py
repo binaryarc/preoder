@@ -20,7 +20,7 @@ conn = sqlite3.connect("proj.db",isolation_level=None) #즉시 반영
 c=conn.cursor()
 
 
-host = '61.76.200.84' # 호스트 ip를 적어주세요
+host = 'HOST IP' # 호스트 ip를 적어주세요
 port = 8080            # 포트번호를 임의로 설정해주세요
 
 server_sock = socket.socket(socket.AF_INET)
