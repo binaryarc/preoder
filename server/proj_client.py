@@ -3,7 +3,7 @@ from select import *
 import sys
 from time import ctime
 
-HOST = '61.76.200.84'
+HOST = 'HOST IP'
 PORT = 8080
 BUFSIZE = 1024
 ADDR = (HOST,PORT)
