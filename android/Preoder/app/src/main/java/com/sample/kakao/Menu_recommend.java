@@ -53,7 +53,7 @@ public class Menu_recommend extends AppCompatActivity {
 
     private Socket client;
 
-    private static String SERVER_IP = "61.76.200.84";
+    private static String SERVER_IP = "[MASKED_SERVER_IP]";
     private static String CONNECT_MSG = null;
 
     static ArrayList<Recommend_data> recommends = new ArrayList<Recommend_data>(); //json 파싱한 데이터들 저장할 곳
