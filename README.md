@@ -1,5 +1,15 @@
 # 프리오더(Preoder) - 키오스크 사전메뉴 선택 앱
 
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![Naver](https://img.shields.io/badge/Naver_API-03C75A?style=for-the-badge&logo=naver&logoColor=white)
+![Kakao](https://img.shields.io/badge/Kakao_API-FFCD00?style=for-the-badge&logo=kakao&logoColor=black)
+
 ## 프로젝트 개요
 
 프리오더(Preoder)는 키오스크 사전메뉴 선택 앱으로, 사용자가 매장에 방문하기 전에 미리 메뉴를 선택하고 준비할 수 있도록 도와주는 시스템입니다. 이 앱은 다음과 같은 주요 기능을 제공합니다:
@@ -29,24 +39,26 @@
 ## 기술 스택
 
 ### 안드로이드 앱
-- **언어**: Java
+- **언어**: 
+  ![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=java&logoColor=white)
 - **API 및 라이브러리**:
-  - 네이버 지도 API
-  - 네이버 검색 API
-  - 카카오 로그인 API
-  - Google Firebase Authentication
-  - Glide (이미지 로딩)
-  - AsyncTask (비동기 처리)
-  - Speech Recognition API (음성 인식)
+  - ![Naver Maps](https://img.shields.io/badge/Naver_Maps-03C75A?style=flat-square&logo=naver&logoColor=white)
+  - ![Kakao Login](https://img.shields.io/badge/Kakao_Login-FFCD00?style=flat-square&logo=kakao&logoColor=black)
+  - ![Google Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)
+  - ![Glide](https://img.shields.io/badge/Glide-25BAA2?style=flat-square)
+  - ![AsyncTask](https://img.shields.io/badge/AsyncTask-3DDC84?style=flat-square&logo=android&logoColor=white)
+  - ![Speech Recognition](https://img.shields.io/badge/Speech_Recognition-4285F4?style=flat-square&logo=google&logoColor=white)
 
 ### 서버
-- **언어**: Python
+- **언어**: 
+  ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 - **프레임워크 및 라이브러리**:
-  - TensorFlow/Keras (LSTM 모델)
-  - KoNLPy (한국어 자연어 처리)
-  - Socket (통신)
-  - SQLite (데이터베이스)
-  - JSON (데이터 포맷)
+  - ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
+  - ![Keras](https://img.shields.io/badge/Keras-D00000?style=flat-square&logo=keras&logoColor=white)
+  - ![KoNLPy](https://img.shields.io/badge/KoNLPy-3775A9?style=flat-square)
+  - ![Socket](https://img.shields.io/badge/Socket-010101?style=flat-square)
+  - ![SQLite](https://img.shields.io/badge/SQLite-07405E?style=flat-square&logo=sqlite&logoColor=white)
+  - ![JSON](https://img.shields.io/badge/JSON-000000?style=flat-square&logo=json&logoColor=white)
 
 ## 주요 코드 구조
 
@@ -102,9 +114,9 @@
 카카오, 네이버, 구글 계정을 통한 로그인을 지원합니다.
 
 **지원 플랫폼**:
-- 카카오 로그인
-- 네이버 로그인
-- 구글 로그인(Firebase 기반)
+- ![Kakao](https://img.shields.io/badge/Kakao-FFCD00?style=flat-square&logo=kakao&logoColor=black) 카카오 로그인
+- ![Naver](https://img.shields.io/badge/Naver-03C75A?style=flat-square&logo=naver&logoColor=white) 네이버 로그인
+- ![Google](https://img.shields.io/badge/Google-4285F4?style=flat-square&logo=google&logoColor=white) 구글 로그인(Firebase 기반)
 
 ### 4. 위치 기반 서비스
 
