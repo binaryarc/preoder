@@ -20,8 +20,8 @@ import java.util.List;
 
 public class NaverLogin extends Activity {
 
-    final String NAVER_CLIENT_ID = "N0t8KpY5XGYQ8hPZj1cK";
-    final String NAVER_CLIENT_SECRET = "NfqCtzLZed";
+    final String NAVER_CLIENT_ID = "[MASKED_NAVER_CLIENT_ID]";
+    final String NAVER_CLIENT_SECRET = "[MASKED_NAVER_CLIENT_SECRET]";
     final String NAVER_RESPONSE_CODE = "00"; // 정상 반환 시 코드
     final String NAVER_REFRESH_URL = "https://nid.naver.com/oauth2.0/token?grant_type=refresh_token&";
     final String[] NAVER_JSON_KEY = {"id", "nickname"};
