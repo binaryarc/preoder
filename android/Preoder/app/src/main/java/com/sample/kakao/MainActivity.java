@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
 //    private KakaoLogin.KakaoSessionCallback sessionCallback;
     private OAuthLogin mNaverLoginModule;
     private NaverLogin mNaverLoginAuth;
-    final String NAVER_CLIENT_ID="N0t8KpY5XGYQ8hPZj1cK";
-    final String NAVER_CLIENT_SECRET="NfqCtzLZed";
+    final String NAVER_CLIENT_ID="[MASKED_NAVER_CLIENT_ID]";
+    final String NAVER_CLIENT_SECRET="[MASKED_NAVER_CLIENT_SECRET]";
     private FirebaseAuth mGoogleLoginModule;
 
 
